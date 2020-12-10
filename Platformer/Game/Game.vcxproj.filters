@@ -21,8 +21,11 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\Collisions.cpp" />
+    <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\FadeToBlack.cpp" />
     <ClCompile Include="Source\PerfTimer.cpp" />
+    <ClCompile Include="Source\Timer.cpp" />
+    <ClCompile Include="Source\Fonts.cpp" />
     <ClCompile Include="Source\Path.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -34,6 +37,12 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\ModuleEnemies.cpp" />
+    <ClCompile Include="Source\SceneIntro.cpp" />
+    <ClCompile Include="Source\SceneWin.cpp" />
+    <ClCompile Include="Source\SceneLoose.cpp" />
+    <ClCompile Include="Source\EnemyBird.cpp" />
+    <ClCompile Include="Source\EnemyBunny.cpp" />
+    <ClCompile Include="Source\SceneLvl2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -71,9 +80,12 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Collisions.h" />
+    <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\FadeToBlack.h" />
     <ClInclude Include="Source\PerfTimer.h" />
+    <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\Fonts.h" />
     <ClInclude Include="Source\Path.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -91,6 +103,12 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModuleEnemies.h" />
+    <ClInclude Include="Source\SceneIntro.h" />
+    <ClInclude Include="Source\SceneWin.h" />
+    <ClInclude Include="Source\SceneLoose.h" />
+    <ClInclude Include="Source\EnemyBird.h" />
+    <ClInclude Include="Source\EnemyBunny.h" />
+    <ClInclude Include="Source\SceneLvl2.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

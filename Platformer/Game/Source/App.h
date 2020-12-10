@@ -21,8 +21,15 @@ class Scene;
 class Map;
 class Player;
 class Collisions;
+class SceneMenu;
 class FadeToBlack;
+class Fonts;
+class SceneLvl2;
 class ModuleParticles;
+class ModuleEnemies;
+class SceneIntro;
+class SceneLoose;
+class SceneWin;
 
 class App
 {
@@ -93,11 +100,23 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
+	SceneLvl2* sceneLvl2;
+	SceneMenu* sceneMenu;
 	Map* map;
 	Player* player;
 	Collisions* collision;
 	FadeToBlack* fadeToBlack;
+	Fonts* fonts;
 	ModuleParticles* moduleParticles;
+	ModuleEnemies* moduleEnemies;
+	SceneIntro* sceneIntro;
+	SceneLoose* sceneLoose;
+	SceneWin* sceneWin;
+
+	int frameRate = 60;
+	float fps = 0.f;
+	float fpsMseconds;
+    int screenTicks;
 
 	List<unsigned int*>	musicList;
 	int volume = 64;
@@ -111,9 +130,30 @@ private:
 	List<Module *> modules;
 
 
+	// NOTE: Redesigned LoadConfig() to avoid storing this variables
+	pugi::xml_document loadFile;
+	pugi::xml_node load;
+
+	PerfTimer ptimer;
+	uint64 frameCount = 0;
+
+	Timer startupTime;
+	Timer frameTime;
+	Timer lastSecFrameTime;
+	Timer dtTimer;
+	uint32 lastSecFrameCount = 0;
+	uint32 prevLastSecFrameCount = 0;
+	float dt = 0.0f;
+
+	float secondsSinceStartup;
+	float fpsCounter;
+	float fpsPreUpdate;
+
 	uint frames;
 
 
+	mutable bool saveGameRequested;
+	bool loadGameRequested;
 };
 
 extern App* app;

@@ -114,7 +114,12 @@ bool Player::Start()
 		position.y = 1584;
 		app->SaveGameRequest();
 	}
-
+	else if (app->sceneLvl2->active == true)
+	{
+		position.x = 620;
+		position.y = 2256;
+		app->SaveGameRequest();
+	}
 	//Cargar texturas
 	idleTex = app->tex->Load("Assets/Textures/Character/idle.png");
 	fallTex = app->tex->Load("Assets/Textures/Character/fall.png");

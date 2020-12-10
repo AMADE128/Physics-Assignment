@@ -5,11 +5,19 @@
 #include "Textures.h"
 #include "Audio.h"
 #include "Scene.h"
+#include "SceneLvl2.h"
 #include "Map.h"
 #include "Player.h"
 #include "Collisions.h"
+#include "SceneMenu.h"
 #include "FadeToBlack.h"
+#include "PerfTimer.h"
+#include "Fonts.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
+#include "SceneIntro.h"
+#include "SceneLoose.h"
+#include "SceneWin.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -31,8 +39,15 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map();
 	player = new Player();
 	collision = new Collisions();
+	sceneMenu = new SceneMenu();
 	fadeToBlack = new FadeToBlack();
+	fonts = new Fonts();
 	moduleParticles = new ModuleParticles();
+	moduleEnemies = new ModuleEnemies();
+	sceneIntro = new SceneIntro();
+	sceneLoose = new SceneLoose();
+	sceneWin = new SceneWin();
+	sceneLvl2 = new SceneLvl2();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -41,17 +56,30 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(map);
+	AddModule(sceneIntro);
+	AddModule(sceneMenu);
 	AddModule(scene);
+	AddModule(sceneLvl2);
 	AddModule(player);
+	AddModule(sceneLoose);
+	AddModule(sceneWin);
 	AddModule(moduleParticles);
+	AddModule(moduleEnemies);
 	AddModule(collision);
 	AddModule(fadeToBlack);
+	AddModule(fonts);
 
+	sceneLvl2->active = false;
+	sceneMenu->active = false;
 	scene->active = false;
+	sceneLoose->active = false;
+	sceneWin->active = false;
 	player->active = false;
 	map->active = false;
 	moduleParticles->active = false;
+	moduleEnemies->active = false;
 	collision->active = false;
+	fonts->active = false;
 
 	// Render last to swap buffer
 	AddModule(render);
@@ -203,7 +231,8 @@ void App::FinishUpdate()
 		fps = fpsCounter;
 		fpsCounter = 0;
 	}
-	SString title("Physics Assignment");
+	SString title("Platformer Game: FPS: %.2f Av.FPS: %.2f Last Frame Ms: %.2f Time since startup: %.3f Frame Count: %I64u ",fps,
+		averageFps, fpsMsecondsAfter, secondsSinceStartup, frameCount);
 	app->win->SetTitle(title.GetString());
 
 	
@@ -253,7 +282,75 @@ bool App::DoUpdate()
 	item = modules.start;
 	Module* pModule = NULL;
 
-	
+	if (input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	{
+		player->god = false;
+		if (sceneIntro->active == true)
+		{
+			fadeToBlack->Fade(sceneIntro, (Module*)scene, 1600 * dt / 6);
+		}
+		else if (sceneMenu->active == true)
+		{
+			fadeToBlack->Fade(app->sceneMenu, (Module*)scene, 1600 * dt / 6);
+		}
+		else if (scene->active == true)
+		{
+			fadeToBlack->Fade(app->scene, (Module*)scene, 1600 * dt / 6);
+		}
+		else if (sceneLvl2->active == true)
+		{
+			fadeToBlack->Fade(app->sceneLvl2, (Module*)scene, 1600 * dt / 6);
+		}
+		else if (sceneWin->active == true)
+		{
+			fadeToBlack->Fade(app->sceneWin, (Module*)scene, 1600 * dt / 6);
+		}
+		else if (sceneLoose->active == true)
+		{
+			fadeToBlack->Fade(sceneLoose, (Module*)scene, 1600 * dt / 6);
+		}
+	}
+	if (input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+	{
+		player->god = false;
+		if (sceneIntro->active == true)
+		{
+			fadeToBlack->Fade(sceneIntro, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+		else if (sceneMenu->active == true)
+		{
+			fadeToBlack->Fade(app->sceneMenu, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+		else if (scene->active == true)
+		{
+			fadeToBlack->Fade(app->scene, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+		else if (sceneLvl2->active == true)
+		{
+			fadeToBlack->Fade(app->sceneLvl2, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+		else if (sceneWin->active == true)
+		{
+			fadeToBlack->Fade(app->sceneWin, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+		else if (sceneLoose->active == true)
+		{
+			fadeToBlack->Fade(sceneLoose, (Module*)sceneLvl2, 1600 * dt / 6);
+		}
+	}
+
+	for(item = modules.start; item != NULL && ret == true; item = item->next)
+	{
+		pModule = item->data;
+
+		if(pModule->active == false) {
+			continue;
+		}
+
+		ret = item->data->Update(dt);
+	}
+
+	return ret;
 }
 
 // Call modules after each loop iteration
@@ -281,6 +378,17 @@ bool App::PostUpdate()
 		if (volume > 0)
 		{
 			volume -= 128 / 32;
+		}
+	}
+	if (app->input->GetKey(SDL_SCANCODE_F11) == KEY_DOWN)
+	{
+		if (frameRate == 30)
+		{
+			frameRate = 60;
+		}
+		else if (frameRate == 60)
+		{
+			frameRate = 30;
 		}
 	}
 
@@ -346,4 +454,84 @@ const char* App::GetOrganization() const
 {
 	return organization.GetString();
 }
+
+// Load / Save
+void App::LoadGameRequest()
+{
+	// NOTE: We should check if SAVE_STATE_FILENAME actually exist
+	loadGameRequested = true;
+}
+
+// ---------------------------------------
+void App::SaveGameRequest() const
+{
+	// NOTE: We should check if SAVE_STATE_FILENAME actually exist and... should we overwriten
+	saveGameRequested = true;
+}
+
+// ---------------------------------------
+// L02: TODO 5: Create a method to actually load an xml file
+// then call all the modules to load themselves
+bool App::LoadGame(pugi::xml_document& loadFile)
+{
+
+	bool ret = false;
+
+	pugi::xml_parse_result result = loadFile.load_file(SAVE_STATE_FILENAME);
+
+	if (result == NULL)
+	{
+		LOG("Could not load xml file: %s. pugi error: %s", SAVE_STATE_FILENAME, result.description());
+	}
+	else
+	{
+		ret = true;
+		load = loadFile.child("game_state");
+	}
+
+	if (ret == true)
+	{
+		ListItem<Module*>* item;
+		item = modules.start;
+
+		while (item != NULL && ret == true)
+		{
+			ret = item->data->LoadState(load.child(item->data->name.GetString()));
+			item = item->next;
+		}
+	}
+
+	loadGameRequested = false;
+
+	return ret;
+}
+
+// L02: TODO 7: Implement the xml save method for current state
+bool App::SaveGame() const
+{
+	bool ret = true;
+
+	pugi::xml_document saveFile;
+	pugi::xml_node nodeBase = saveFile.append_child("game_state");
+
+	if (ret == true)
+	{
+		ListItem<Module*>* item;
+		item = modules.start;
+
+		while (item != NULL && ret == true)
+		{
+			pugi::xml_node nodes = nodeBase.append_child(item->data->name.GetString());
+			ret = item->data->SaveState(nodeBase.child(item->data->name.GetString()));
+			item = item->next;
+		}
+	}
+
+	saveFile.save_file("save_game.xml");
+
+	saveGameRequested = false;
+
+	return ret;
+}
+
 
