@@ -15,31 +15,6 @@
 // Small class to return to other modules to track position and rotation of physics bodies
 
 
-
-struct Collider
-{
-	enum Type
-	{
-		GROUND,
-			OBJECT,
-
-	};
-
-	SDL_Rect rect;
-	Type type;
-	Module* listener = nullptr;
-
-	Collider(SDL_Rect rectangle, Type type, Module* listener = nullptr);
-
-};
-
-Collider::Collider(SDL_Rect rectangle, Type type, Module* listener) : rect(rectangle), type(type), listener(listener)
-{
-
-}
-
-
-
 class PhysBody
 {
 public:
@@ -63,6 +38,10 @@ public:
 	update_status PreUpdate();
 	update_status PostUpdate();
 	bool CleanUp();
+
+	SDL_Rect box;
+	int speed_x = 0;
+	int speed_y = 0;
 
 private:
 

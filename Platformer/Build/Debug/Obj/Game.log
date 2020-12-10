@@ -1,0 +1,269 @@
+﻿  Collider.cpp
+  Collisions.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Enemy.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  FadeToBlack.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\FadeToBlack.cpp(89,19): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
+  Main.cpp
+  App.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(23,2): error C2065: 'ptimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(59,2): error C2065: 'ptimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(86,2): error C2065: 'ptimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(123,2): error C2065: 'ptimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(131,2): error C2065: 'fpsMseconds': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(187,2): error C2065: 'secondsSinceStartup': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(187,24): error C2065: 'startupTime': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(188,2): error C2065: 'fpsPreUpdate': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(196,2): error C2065: 'frameCount': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(197,21): error C2065: 'frameCount': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(197,34): error C2065: 'secondsSinceStartup': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(198,2): error C2065: 'fpsCounter': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(199,44): error C2065: 'fpsPreUpdate': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(200,6): error C2065: 'fpsMseconds': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(202,3): error C2065: 'fpsMseconds': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(203,3): error C2065: 'fps': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(203,9): error C2065: 'fpsCounter': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(204,3): error C2065: 'fpsCounter': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(210,24): error C2065: 'screenTicks': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(210,47): error C2065: 'screenTicks': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(220,2): error C2065: 'screenTicks': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(220,23): error C2065: 'frameRate': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(222,2): error C2065: 'dt': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(222,7): error C2065: 'dtTimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(223,2): error C2065: 'dtTimer': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(235,6): error C2065: 'loadGameRequested': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(235,31): warning C4805: '==': unsafe mix of type 'unknown-type' and type 'bool' in operation
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(237,12): error C2065: 'loadFile': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(243,6): error C2065: 'saveGameRequested': undeclared identifier
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.cpp(243,31): warning C4805: '==': unsafe mix of type 'unknown-type' and type 'bool' in operation
+  Audio.cpp
+  Input.cpp
+  Map.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Map.cpp(267,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Map.cpp(268,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  ModuleEnemies.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ModuleParticles.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(55,24): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(124,28): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(155,90): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(155,63): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(159,81): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(159,56): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(163,85): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(163,63): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(167,84): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(167,62): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(185,20): warning C4244: '=': conversion from 'int' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\ModuleParticles.cpp(186,20): warning C4244: '=': conversion from 'int' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+  Particle.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Particle.cpp(41,19): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Particle.cpp(53,41): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Particle.cpp(53,29): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+  Path.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PerfTimer.cpp
+  Player.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(144,106): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(160,107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(197,12): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(219,64): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(219,68): error C2664: 'bool FadeToBlack::Fade(Module *,Module *,float)': cannot convert argument 2 from 'int' to 'Module *'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(219,66): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\FadeToBlack.h(32,7): message : see declaration of 'FadeToBlack::Fade'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(225,8): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(228,43): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(291,24): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(296,24): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(304,25): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(311,25): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(364,25): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(371,25): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(489,25): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(495,24): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(504,7): error C2039: 'fps': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(514,23): warning C4244: '+=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(519,107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(588,13): error C2039: 'fonts': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(592,13): error C2039: 'fonts': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(712,65): error C2039: 'sceneLoose': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(712,69): error C2664: 'bool FadeToBlack::Fade(Module *,Module *,float)': cannot convert argument 2 from 'int' to 'Module *'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(712,67): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\FadeToBlack.h(32,7): message : see declaration of 'FadeToBlack::Fade'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(714,13): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(716,43): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(716,69): error C2039: 'sceneLoose': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(735,14): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Player.cpp(807,16): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+  Scene.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(60,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(62,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Animation.h(69,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(110,12): error C2039: 'fonts': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(111,12): error C2039: 'fonts': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(116,20): error C2039: 'moduleEnemies': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(117,20): error C2039: 'moduleEnemies': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(119,20): error C2039: 'moduleEnemies': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(120,20): error C2039: 'moduleEnemies': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(151,61): error C2039: 'sceneLvl2': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(151,72): error C2664: 'bool FadeToBlack::Fade(Module *,Module *,float)': cannot convert argument 2 from 'float' to 'Module *'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\FadeToBlack.h(32,7): message : see declaration of 'FadeToBlack::Fade'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(252,12): error C2039: 'fonts': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\Scene.cpp(253,20): error C2039: 'moduleEnemies': is not a member of 'App'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Platformer\Game\Source\App.h(27): message : see declaration of 'App'
+  Render.cpp
+  Textures.cpp
+  Window.cpp
+  Log.cpp
+  Generating Code...
+  Compiling...
+  pugixml.cpp
+  Generating Code...

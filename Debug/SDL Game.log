@@ -1,4 +1,4 @@
-﻿  ModuleSceneIntro.cpp
-C:\Users\polvp1\Desktop\Physicsss\ModuleSceneIntro.cpp(85,9): warning C4101: 'y': unreferenced local variable
-C:\Users\polvp1\Desktop\Physicsss\ModuleSceneIntro.cpp(85,6): warning C4101: 'x': unreferenced local variable
-  SDL Game.vcxproj -> C:\Users\polvp1\Desktop\Physicsss\Debug\2D Physics - class 4.exe
+﻿  ModulePhysics.cpp
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\ModulePhysics.cpp(61,67): warning C4305: 'argument': truncation from 'int' to 'Uint8'
+C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\ModulePhysics.cpp(61,44): warning C4309: 'argument': truncation of constant value
+  SDL Game.vcxproj -> C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Debug\2D Physics - class 4.exe
