@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModulePhysics.h"
 #include "ModuleSceneIntro.h"
+#include "String.h"
 
 #include "Application.h"
 
@@ -75,6 +76,7 @@ bool Application::Init()
 			ret = item->data->Start();
 		item = item->next;
 	}
+	title.Create("title");
 	
 	return ret;
 }
@@ -109,6 +111,9 @@ update_status Application::Update()
 			ret = item->data->PostUpdate();
 		item = item->next;
 	}
+
+	SString title("Physics:  Wind: %.2f Direction: Right", physics->wind, physics->direction);
+	window->SetTitle(title.GetString());
 
 	return ret;
 }

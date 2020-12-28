@@ -59,7 +59,6 @@ update_status ModulePhysics::PostUpdate()
 	App->renderer->DrawRectangle(box, 100, 42, 42, 0, true, alpha);
 
 	App->renderer->DrawLine(0,500, 2000, 500, 1000, 42, 42, 42, alpha);
-
 	if(!debug)
 		return UPDATE_CONTINUE;
 

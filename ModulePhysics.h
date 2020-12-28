@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include "String.h"
 
 
 #define GRAVITY_X 0.0f
@@ -42,6 +43,8 @@ public:
 	SDL_Rect box;
 	int speed_x = 0;
 	int speed_y = 0;
+	float wind = 0.0;
+	SString direction = 'NONE';
 
 private:
 

@@ -2,6 +2,7 @@
 
 #include "p2List.h"
 #include "Globals.h"
+#include "String.h"
 
 class Module;
 class ModuleRender;
@@ -37,6 +38,11 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	const char* GetTitle() const
+	{
+		return title.GetString();
+	}
+	SString title;
 
 private:
 
