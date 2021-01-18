@@ -1,6 +1,0 @@
-C:\Users\polvp1\Desktop\Physicsss\Debug\2D Physics - class 4.exe
-C:\Users\polvp1\Desktop\Physicsss\Debug\2D Physics - class 4.pdb
-C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Debug\2D Physics - class 4.exe
-C:\Users\marcpl2\Documents\GitHub\Physics-Assignment\Debug\2D Physics - class 4.pdb
-C:\Users\POL\Documents\GitHub\Physics-Assignment\Debug\2D Physics - class 4.exe
-C:\Users\POL\Documents\GitHub\Physics-Assignment\Debug\2D Physics - class 4.pdb
