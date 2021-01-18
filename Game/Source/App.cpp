@@ -5,7 +5,6 @@
 #include "Textures.h"
 #include "Audio.h"
 #include "Scene.h"
-#include "SceneLvl2.h"
 #include "Map.h"
 #include "Player.h"
 #include "Collisions.h"
@@ -15,12 +14,9 @@
 #include "Fonts.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
-#include "SceneIntro.h"
 #include "SceneLoose.h"
 #include "SceneWin.h"
 #include "Entity.h"
-#include "EntityManager.h"
-#include "Pathfinding.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -47,12 +43,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	fonts = new Fonts();
 	moduleParticles = new ModuleParticles();
 	moduleEnemies = new ModuleEnemies();
-	sceneIntro = new SceneIntro();
 	sceneLoose = new SceneLoose();
 	sceneWin = new SceneWin();
-	sceneLvl2 = new SceneLvl2();
-	pathfinding = new PathFinding();
-	entityManager = new EntityManager();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -61,22 +53,17 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(map);
-	AddModule(sceneIntro);
 	AddModule(sceneMenu);
 	AddModule(scene);
-	AddModule(sceneLvl2);
 	AddModule(sceneLoose);
 	AddModule(sceneWin);
-	AddModule(entityManager);
 	AddModule(moduleParticles);
 	AddModule(moduleEnemies);
 	AddModule(collision);
 	AddModule(player);
 	AddModule(fadeToBlack);
 	AddModule(fonts);
-	AddModule(pathfinding);
 
-	sceneLvl2->active = false;
 	sceneMenu->active = false;
 	scene->active = false;
 	sceneLoose->active = false;
@@ -291,21 +278,13 @@ bool App::DoUpdate()
 	{
 		player->god = false;
 		player->startLevel = true;
-		if (sceneIntro->active == true)
-		{
-			fadeToBlack->Fade(sceneIntro, (Module*)scene, 1600 * dt / 6);
-		}
-		else if (sceneMenu->active == true)
+		if (sceneMenu->active == true)
 		{
 			fadeToBlack->Fade(app->sceneMenu, (Module*)scene, 1600 * dt / 6);
 		}
 		else if (scene->active == true)
 		{
 			fadeToBlack->Fade(app->scene, (Module*)scene, 1600 * dt / 6);
-		}
-		else if (sceneLvl2->active == true)
-		{
-			fadeToBlack->Fade(app->sceneLvl2, (Module*)scene, 1600 * dt / 6);
 		}
 		else if (sceneWin->active == true)
 		{
@@ -314,35 +293,6 @@ bool App::DoUpdate()
 		else if (sceneLoose->active == true)
 		{
 			fadeToBlack->Fade(sceneLoose, (Module*)scene, 1600 * dt / 6);
-		}
-	}
-	if (input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
-	{
-		player->god = false;
-		player->startLevel = true;
-		if (sceneIntro->active == true)
-		{
-			fadeToBlack->Fade(sceneIntro, (Module*)sceneLvl2, 1600 * dt / 6);
-		}
-		else if (sceneMenu->active == true)
-		{
-			fadeToBlack->Fade(app->sceneMenu, (Module*)sceneLvl2, 1600 * dt / 6);
-		}
-		else if (scene->active == true)
-		{
-			fadeToBlack->Fade(app->scene, (Module*)sceneLvl2, 1600 * dt / 6);
-		}
-		else if (sceneLvl2->active == true)
-		{
-			fadeToBlack->Fade(app->sceneLvl2, (Module*)sceneLvl2, 1600 * dt / 6);
-		}
-		else if (sceneWin->active == true)
-		{
-			fadeToBlack->Fade(app->sceneWin, (Module*)sceneLvl2, 1600 * dt / 6);
-		}
-		else if (sceneLoose->active == true)
-		{
-			fadeToBlack->Fade(sceneLoose, (Module*)sceneLvl2, 1600 * dt / 6);
 		}
 	}
 

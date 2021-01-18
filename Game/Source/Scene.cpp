@@ -186,42 +186,7 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	app->map->Draw();
 
-	dt *= 6;
-	checkPointIdleAnim.speed = 4.0f * dt;
-	checkPointTouchAnim.speed = 4.0f * dt;
-	appleAnim.speed = 4.0f * dt;
-	pineappleAnim.speed = 4.0f * dt;
-	//Draw Scenes
-	if (app->player->position.x < 720 && app->player->position.y < 816 && app->player->god == false)
-	{
-		app->fadeToBlack->Fade(app->scene, (Module*)app->sceneLvl2, 80);
-	}
-
-	if (savePoint == true)
-	{
-		if (checkPointTouchAnim.finish == false)
-		{
-			currentAnimation = &checkPointTouchAnim;
-			currentTex = checkPointTouchTex;
-		}
-		else if(checkPointTouchAnim.finish == true)
-		{
-			currentAnimation = &checkPointIdleAnim;
-			currentTex = checkPointIdleTex;
-		}
-	}
-	else
-	{
-		currentAnimation = &checkPointStartAnim;
-		currentTex = checkPointStartTex;
-	}
-	if (savePoint == true && checkpointFX == false)
-	{
-		checkpointFX = true;
-		app->audio->PlayFx(checkpointMusic);
-	}
 
 	return true;
 }
@@ -229,68 +194,8 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
-	bool ret = true;
-
-	if (app->player->playerState == app->player->NORMAL)
-	{
-		currentAnimation->Update();
-	}
-	SDL_Rect checkPointRect = currentAnimation->GetCurrentFrame();
-	app->render->DrawTexture(currentTex, 3800, 1296, &checkPointRect);
 	
-	Animation* apple = &appleAnim;
-	if (app->player->playerState == app->player->NORMAL)
-	{
-		apple->Update();
-	}
-	if (appleColl1 != nullptr && appleColl1->isCollected != true && apples[0] == 1)
-	{
-		SDL_Rect appleRect = apple->GetCurrentFrame();
-		app->render->DrawTexture(appleTex, 2544, 1344, &appleRect);
-	}
-	else if (appleColl1 != nullptr && appleColl1->isCollected == true) apples[0] = 0;
-
-	if (appleColl2 != nullptr && appleColl2->isCollected != true && apples[1] == 1)
-	{
-		SDL_Rect appleRect = apple->GetCurrentFrame();
-		app->render->DrawTexture(appleTex, 3776, 900, &appleRect);
-	}
-	else if (appleColl2 != nullptr && appleColl2->isCollected == true) apples[1] = 0;
-
-	if (appleColl3 != nullptr && appleColl3->isCollected == false && apples[2] == 1)
-	{
-		SDL_Rect appleRect = apple->GetCurrentFrame();
-		app->render->DrawTexture(appleTex, 3976, 836, &appleRect);
-	}
-	else if (appleColl3 != nullptr && appleColl3->isCollected == true) apples[2] = 0;
-
-	if (appleColl4 != nullptr && appleColl4->isCollected == false && apples[3] == 1)
-	{
-		SDL_Rect appleRect = apple->GetCurrentFrame();
-		app->render->DrawTexture(appleTex, 4176, 776, &appleRect);
-	}
-	else if (appleColl4 != nullptr && appleColl4->isCollected == true) apples[3] = 0;
-
-	if (appleColl5 != nullptr && appleColl5->isCollected == false && apples[4] == 1)
-	{
-		SDL_Rect appleRect = apple->GetCurrentFrame();
-		app->render->DrawTexture(appleTex, 1368, 528, &appleRect);
-	}
-	else if (appleColl5 != nullptr && appleColl5->isCollected == true) apples[4] = 0;
-
-	Animation* pineapple = &pineappleAnim;
-	if (app->player->playerState == app->player->NORMAL)
-	{
-		pineapple->Update();
-	}
-	if (pineappleColl1 != nullptr && pineappleColl1->isCollected == false && apples[5] == 1)
-	{
-		SDL_Rect pineappleRect1 = pineapple->GetCurrentFrame();
-		app->render->DrawTexture(pineappleTex, 4300, 500, &pineappleRect1);
-	}
-	else if (pineappleColl1 != nullptr && pineappleColl1->isCollected == true) apples[5] = 0;
-
-	return ret;
+	return true;
 }
 
 // Called before quitting

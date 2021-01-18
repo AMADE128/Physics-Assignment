@@ -25,14 +25,10 @@ class Collisions;
 class SceneMenu;
 class FadeToBlack;
 class Fonts;
-class SceneLvl2;
 class ModuleParticles;
 class ModuleEnemies;
-class SceneIntro;
 class SceneLoose;
 class SceneWin;
-class PathFinding;
-class EntityManager;
 class Entity;
 
 class App
@@ -104,7 +100,6 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
-	SceneLvl2* sceneLvl2;
 	SceneMenu* sceneMenu;
 	Map* map;
 	Player* player;
@@ -113,11 +108,8 @@ public:
 	Fonts* fonts;
 	ModuleParticles* moduleParticles;
 	ModuleEnemies* moduleEnemies;
-	SceneIntro* sceneIntro;
 	SceneLoose* sceneLoose;
 	SceneWin* sceneWin;
-	PathFinding* pathfinding;
-	EntityManager* entityManager;
 	Entity* entity;
 
 	int frameRate = 60;

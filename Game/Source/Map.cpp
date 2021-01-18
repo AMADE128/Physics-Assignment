@@ -1,4 +1,3 @@
-
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
@@ -12,7 +11,6 @@
 #include "Collider.h"
 #include "Player.h"
 #include "ModuleEnemies.h"
-#include "Pathfinding.h"
 
 #include <math.h>
 
@@ -61,45 +59,6 @@ iPoint Map::GetDimensionsMap()
 	return { data.tileWidth,data.tileHeight };
 }
 
-void Map::DrawPath()
-{
-	iPoint pointV;
-	iPoint pointF;
-	iPoint pointPath;
-
-	// Draw visited
-	ListItem<iPoint>* itemVisited = app->pathfinding->visited.start;
-	PQueueItem<iPoint>* itemFrontier = app->pathfinding->frontier.start;
-
-
-	while (itemVisited)
-	{
-		pointV = itemVisited->data;
-		iPoint pos = MapToWorld(pointV.x, pointV.y);
-
-		app->render->DrawRectangle({ pos.x,pos.y,48,48 }, { 0,200,0,150 });
-		itemVisited = itemVisited->next;
-
-	}
-	while (itemFrontier)
-	{
-
-		pointF = itemFrontier->data;
-		iPoint pos = MapToWorld(pointF.x, pointF.y);
-		app->render->DrawRectangle({ pos.x,pos.y,48,48 }, { 0,200,0,150 });
-		itemFrontier = itemFrontier->next;
-
-	}
-	int pathSize = path.Count();
-	for (size_t i = 0; i < pathSize; i++)
-	{
-
-		pointPath = { path.At(i)->x,path.At(i)->y };
-		iPoint pos = MapToWorld(pointPath.x, pointPath.y);
-		app->render->DrawRectangle({ pos.x,pos.y,48,48 }, { 0,200,0,150 });
-
-	}
-}
 
 void Map::Draw()
 {
@@ -130,7 +89,6 @@ void Map::Draw()
 		}
 	}
 
-	if (app->collision->debug == true) app->map->DrawPath();
 }
 
 // L04: DONE 8: Create a method that translates x,y coordinates from map positions to world positions

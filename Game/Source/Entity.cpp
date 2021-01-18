@@ -1,6 +1,5 @@
 #include "Entity.h"
 #include "Player.h"
-#include "EntityManager.h"
 
 #include "Defs.h"
 #include "Log.h"

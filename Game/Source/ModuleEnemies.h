@@ -47,16 +47,11 @@ public:
 	bool CleanUp() override;
 
 	bool Die(Collider* c1, Collider* c2) override;
-	bool Fall(Collider* c1, Collider* c2) override;
-	bool StopMovement(Collider* c1, Collider* c2) override;
-	bool StopMovementY(Collider* c1, Collider* c2) override;
 
 	bool AddEnemy(EnemyType type, int x, int y);
 
 	void EnemiesSpawn();
 
-	void CreatePathEnemy(iPoint origin, iPoint destination);
-	int GetCurrentPositionInPath(iPoint mapPositionEnemy);
 	iPoint MapToWorld(iPoint position);
 
 	// All spawned enemies in the scene
@@ -79,7 +74,6 @@ public:
 	unsigned int birdDieFx;
 
 	// Spawns a new enemy using the data from the queue
-	bool pathFinding = false;
 	void SpawnEnemy(const EnemySpawnpoint& info);
 
 	// A queue with all spawn points information

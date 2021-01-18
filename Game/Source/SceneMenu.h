@@ -2,9 +2,6 @@
 #define __SCENEMENU_H__
 
 #include "Module.h"
-#include "GuiButton.h"
-#include "GuiSlider.h"
-#include "GuiCheckBox.h"
 
 struct SDL_Texture;
 
@@ -43,7 +40,6 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	bool OnGuiMouseClickEvent(GuiControl* control);
 
 	SDL_Texture* menuTex;
 	SDL_Texture* boxTex;
@@ -58,30 +54,11 @@ public:
 	unsigned int hoverFx;
 	unsigned int startButtonFx;
 
-	
-	GuiSlider* sliderMusic;
-	GuiSlider* sliderFx;
 
-	GuiCheckBox* checkFullScreen;
-	GuiCheckBox* checkVSync;
-	GuiCheckBox* checkCredits;
-
-	bool LoadMenu(pugi::xml_node&);
-	bool Menu(pugi::xml_document& loadFile);
 
 	float valueToVolume = 0;
 
 private:
-
-	GuiButton* btnNew;
-	GuiButton* btnExit;
-	GuiButton* btnLoad;
-	GuiButton* btnOptions;
-	GuiButton* btnBack;
-
-
-	pugi::xml_node load;
-	pugi::xml_document loadFile;
 
 	int currentLvl;
 };

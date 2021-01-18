@@ -16,9 +16,6 @@
 #include "Map.h"
 
 #include "Enemy.h"
-#include "EnemyBunny.h"
-#include "EnemyBird.h"
-#include "Pathfinding.h"
 
 #include "SDL/include/SDL.h"
 
@@ -60,7 +57,6 @@ bool ModuleEnemies::PreUpdate()
 		if (enemies[i] != nullptr && enemies[i]->deathFinish == true)
 		{
 			LOG("Despawning enemy");
-			app->pathfinding->ResetPath({ enemies[i]->collider->rect.x, enemies[i]->collider->rect.y });
 			app->collision->RemoveCollider(enemies[i]->collider);
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -173,22 +169,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 	{
 		if (enemies[i] == nullptr)
 		{
-			switch (info.type)
-			{
-			case EnemyType::BIRD:
-				LOG("Loading bird info");
-				enemies[i] = new EnemyBird(info.x, info.y);
-				enemies[i]->enemyType = info.type;
-				//enemies[i]->texture = birdFly;
-				break;
-			case EnemyType::BUNNY:
-				LOG("Loading Bunny info");
-				enemies[i] = new EnemyBunny(info.x, info.y);
-				enemies[i]->enemyType = info.type;
-				//enemies[i]->texture = bunnyIdle;
-				break;
-			}
-			break;
 		}
 	}
 }
@@ -208,74 +188,6 @@ bool ModuleEnemies::Die(Collider* c1, Collider* c2)
 	return true;
 }
 
-bool ModuleEnemies::Fall(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			enemies[i]->yDownCollision = false;
-			enemies[i]->xLeftCollision = false;
-			enemies[i]->xRightCollision = false;
-			break;
-		}
-	}
-
-	return true;
-}
-
-bool ModuleEnemies::StopMovement(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			enemies[i]->StopMovement(c1, c2); //Notify the enemy of a collision
-			break;
-		}
-	}
-
-	return true;
-}
-
-bool ModuleEnemies::StopMovementY(Collider* c1, Collider* c2)
-{
-	bool ret = true;
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			enemies[i]->StopMovementY(c1, c2); //Notify the enemy of a collision
-			break;
-		}
-	}
-
-	return ret;
-}
-
-void ModuleEnemies::CreatePathEnemy(iPoint mapPositionEnemy, iPoint mapPositionDestination)
-{
-	if (checkDestination->Time(1000))
-	{
-		app->pathfinding->ResetPath(mapPositionEnemy);
-		checkDestination->Start();
-		app->pathfinding->ComputePathAStar(mapPositionEnemy, mapPositionDestination);
-		lastPath = app->pathfinding->GetLastPath();
-	}
-}
-
-int ModuleEnemies::GetCurrentPositionInPath(iPoint mapPositionEnemy)
-{
-	int i;
-	if (lastPath != nullptr)
-	{
-		for (i = 0; i < lastPath->Count(); i++)
-		{
-			if (mapPositionEnemy == iPoint({ lastPath->At(i)->x, lastPath->At(i)->y })) break;
-		}
-	}
-	return i;
-}
 
 iPoint ModuleEnemies::MapToWorld(iPoint position)
 {

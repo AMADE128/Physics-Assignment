@@ -36,14 +36,6 @@ public:
 	// Triggers an animation and a sound fx
 	virtual bool Die(Collider* c1, Collider* c2);
 
-	virtual bool StopMovement(Collider* c1, Collider* c2);
-
-	virtual bool StopMovementY(Collider* c1, Collider* c2);
-
-	virtual bool Fall(Collider* c1, Collider* c2);
-
-	virtual void Pathfinding(int enemyposx, int enemyposy);
-
 	virtual void MoveEnemy(iPoint position, iPoint nextAuxPositionEenemy, iPoint mapPositionEnemy, EnemyType type);
 
 	enum State {

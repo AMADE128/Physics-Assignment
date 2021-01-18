@@ -39,8 +39,6 @@
     <ClCompile Include="Source\ModuleEnemies.cpp" />
     <ClCompile Include="Source\SceneWin.cpp" />
     <ClCompile Include="Source\SceneLoose.cpp" />
-    <ClCompile Include="Source\EnemyBird.cpp" />
-    <ClCompile Include="Source\EnemyBunny.cpp" />
     <ClCompile Include="Source\GuiButton.cpp">
       <Filter>GuiControl</Filter>
     </ClCompile>
@@ -114,8 +112,6 @@
     <ClInclude Include="Source\ModuleEnemies.h" />
     <ClInclude Include="Source\SceneWin.h" />
     <ClInclude Include="Source\SceneLoose.h" />
-    <ClInclude Include="Source\EnemyBird.h" />
-    <ClInclude Include="Source\EnemyBunny.h" />
     <ClInclude Include="Source\GuiButton.h">
       <Filter>GuiControl</Filter>
     </ClInclude>

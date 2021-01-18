@@ -43,21 +43,12 @@ public:
 
 	bool PostUpdate();
 
-	bool StopMovementY(Collider* c1, Collider* c2) override;
-	bool StopMovement(Collider* c1, Collider* c2) override;
-
-	bool Fall(Collider* c1, Collider* c2) override;
-
 	bool Die(Collider* c1, Collider* c2) override;
 	bool CameraScroll(Collider* c1, Collider* c2) override;
-	bool CheckPoint(Collider* c1, Collider* c2) override;
 	bool CollectApple(Collider* c1, Collider* c2) override;
 	bool CollectPineapple(Collider* c1, Collider* c2) override;
 
 	bool LoadPlayerCamera();
-	bool LoadState(pugi::xml_node&);
-	bool SaveState(pugi::xml_node&) const;
-	bool OnGuiMouseClickEvent(GuiControl* control);
 
 	// Called before quitting
 	bool CleanUp();
