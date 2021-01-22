@@ -32,7 +32,7 @@ private:
 	iPoint position;
 	float velocity;
 	SDL_Texture* texture = nullptr;
-
+	SDL_Texture* player;
 };
 
 #endif // _PLAYER_H_

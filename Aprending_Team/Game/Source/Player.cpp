@@ -27,8 +27,8 @@ bool Player::Start()
 {
 	active = true;
 	// Create new ship
-
-
+	player = app->tex->Load("Output/Assets/Textures/Rocket.png");
+	app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.ogg");
 	position.x = 0;
 	position.y = 0;
 
