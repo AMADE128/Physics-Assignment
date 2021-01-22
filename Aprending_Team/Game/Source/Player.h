@@ -28,12 +28,16 @@ public:
 	bool CleanUp();
 
 	iPoint position;
+	bool alive;
 private:
 
-	
+	SDL_Texture* explosionTex;
 	float velocity;
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* rocketTex;
+	Animation explosionAnim;
+	Animation* currentAnimation = nullptr;
+	
 };
 
 #endif // _PLAYER_H_

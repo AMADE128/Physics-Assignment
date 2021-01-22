@@ -80,6 +80,10 @@ bool Scene::CleanUp()
 {
 	if (!active)
 		return true;
+	app->tex->UnLoad(backgroundTex);
+	app->tex->UnLoad(moonTex);
+	app->tex->UnLoad(earthTex);
+	app->tex->UnLoad(cloudTex);
 
 	LOG("Freeing scene");
 	active = false;
