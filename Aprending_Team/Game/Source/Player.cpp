@@ -30,6 +30,7 @@ bool Player::Start()
 	// Create new ship
 	rocketTex = app->tex->Load("Assets/Textures/rocket.png");
 	explosionTex = app->tex->Load("Assets/Textures/explosion.png");
+	meteorTex = app->tex->Load("Assets/Textures/meteor.png");
 	app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.ogg");
 	position.x = 640;
 	position.y = 65;
@@ -40,6 +41,13 @@ bool Player::Start()
 	}
 	explosionAnim.loop = false;
 	explosionAnim.speed = 0.05f;
+
+	for (int i = 0; i < 58 * 4; i += 58)
+	{
+		meteorAnim.PushBack({ i, 0, 58, 58 });
+	}
+	meteorAnim.loop = true;
+	meteorAnim.speed = 0.15f;
 
 	return true;
 }
@@ -71,9 +79,13 @@ bool Player::PreUpdate()
 		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 		{
 			position.x -= 5;
-			alive = false;
 		}
 	}
+
+	if (position.x < 50 + 58 && position.x + 55 > 50 && position.y < 50 + 58 && position.y + 175 > 50) alive = false;
+
+	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) alive = true;
+
 	return true;
 }
 
@@ -93,16 +105,22 @@ bool Player::Update(float dt)
 
 bool Player::PostUpdate()
 {
-	Animation* explotion = &explosionAnim;
-	explotion->Update();
 
 	//explosion trigger
 	if (alive == false && explosionAnim.HasFinished() == false)
 	{
+		Animation* explotion = &explosionAnim;
+		explotion->Update();
 		SDL_Rect explosionRec = explotion->GetCurrentFrame();
 		app->render->DrawTexture(explosionTex, position.x - 165, position.y - 100, &explosionRec);
-		
 	}
+
+	//meteor texture
+	Animation* meteor = &meteorAnim;
+	meteor->Update();
+
+	SDL_Rect meteorRec = meteor->GetCurrentFrame();
+	app->render->DrawTexture(meteorTex, 50, 50, &meteorRec);
 
 	//player texture
 

@@ -44,6 +44,6 @@ public:
     void SetMass(float _Mass) { mass = _Mass; };
     void SetLives(float _Lives) { lives = _Lives; };
     void SetClassType(Class type) { classType = type; };
-    void SetDimension(float width)
+    //void SetDimension(float width)
 
 };

@@ -31,11 +31,13 @@ public:
 	bool alive;
 private:
 
-	SDL_Texture* explosionTex;
 	float velocity;
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* rocketTex;
+	SDL_Texture* meteorTex;
+	SDL_Texture* explosionTex;
 	Animation explosionAnim;
+	Animation meteorAnim;
 	Animation* currentAnimation = nullptr;
 	
 };
