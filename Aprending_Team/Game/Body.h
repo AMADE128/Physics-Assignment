@@ -11,9 +11,10 @@ enum class Class
 {
     NONE,
     PLAYER,
-    ASTEROIDS,
+    ENEMIES,
     WINEARTH,
-    WINMOON
+    WINMOON,
+    FLOOR
 };
 
 class Body
@@ -25,6 +26,7 @@ public:
     int fuel;
     float width;
     float height;
+    Class classType;
     //Lineal
     fPoint position = { 0,0 };
     fPoint velocity = { 0,0 };
@@ -39,5 +41,9 @@ public:
     // Methods
     void addForce();
     void addMomentum();
+    void SetMass(float _Mass) { mass = _Mass; };
+    void SetLives(float _Lives) { lives = _Lives; };
+    void SetClassType(Class type) { classType = type; };
+    void SetDimension(float width)
 
 };
