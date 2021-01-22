@@ -47,7 +47,7 @@ bool Player::PreUpdate()
 {
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 	{
-		app->render->camera.y += 3;
+		app->render->camera.y += 30;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{

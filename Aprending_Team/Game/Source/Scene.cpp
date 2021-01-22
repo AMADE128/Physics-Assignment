@@ -36,6 +36,8 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	backgroundTex = app->tex->Load("Assets/Textures/background.png");
+	moonTex = app->tex->Load("Assets/Textures/moon.png");
+	earthTex = app->tex->Load("Assets/Textures/earth.png");
 	return true;
 }
 
@@ -56,6 +58,14 @@ bool Scene::PostUpdate()
 {
 	SDL_Rect backgroundRec = { 0, 0, 1280, 7108 };
 	app->render->DrawTexture(backgroundTex, 0, -6000, &backgroundRec);
+
+	SDL_Rect moonRec = { 0, 0, 1280, 804 };
+	app->render->DrawTexture(moonTex, 0, -6000, &moonRec);
+
+	SDL_Rect earthRec = { 0, 0, 1280, 1000 };
+	app->render->DrawTexture(earthTex, 0, 110, &earthRec);
+	
+	
 	bool ret = true;
 
 	return ret;
