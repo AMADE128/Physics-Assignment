@@ -60,6 +60,9 @@
     <ClCompile Include="Source\SceneLose.cpp">
       <Filter>Gameplay\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Gameplay\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\App.h" />
@@ -147,13 +150,16 @@
     <ClInclude Include="Source\SceneLose.h">
       <Filter>Gameplay\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Gameplay\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneControl.h">
+      <Filter>Gameplay\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
       <UniqueIdentifier>{83a966c7-b4bb-4eff-9c2c-3ff3c7b55a60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{2cad778a-d356-48b0-9fee-587f1bbb187e}</UniqueIdentifier>
     </Filter>
     <Filter Include="External\PugiXml">
       <UniqueIdentifier>{2855ff7f-53a1-413d-a75b-18b4ade921dd}</UniqueIdentifier>
@@ -169,6 +175,9 @@
     </Filter>
     <Filter Include="Gameplay\Scenes">
       <UniqueIdentifier>{5041a905-aa71-42c3-81cd-08e3010ea04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{2cad778a-d356-48b0-9fee-587f1bbb187e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
