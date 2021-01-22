@@ -36,6 +36,10 @@ public:
 	bool CleanUp();
 
 	SDL_Texture* backgroundTex;
+	SDL_Texture* moonTex;
+	SDL_Texture* earthTex;
+	SDL_Texture* cloudTex;
+	SDL_Texture* rocketTex;
 
 private:
 };
