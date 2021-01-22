@@ -27,12 +27,13 @@ public:
 
 	bool CleanUp();
 
+	iPoint position;
 private:
 
-	iPoint position;
+	
 	float velocity;
 	SDL_Texture* texture = nullptr;
-	SDL_Texture* player;
+	SDL_Texture* rocketTex;
 };
 
 #endif // _PLAYER_H_
