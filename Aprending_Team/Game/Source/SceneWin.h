@@ -31,10 +31,19 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	int GetNumThisScene() { return 0; };
+	int GetNumThisScene()
+	{
+		return 0;
+	};
+
 
 private:
 
+	SDL_Texture* img;
+	SDL_Texture* bgText;
+	int speed = 65;
+	int imgX = 0, imgY = 0, imgW = 0, imgH = 0;
+	bool transition;
 };
 
 #endif // !__SCENEWIN_H__

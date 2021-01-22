@@ -27,7 +27,7 @@ App* app = NULL;
 
 int main(int argc, char* args[])
 {
-	LOG("Physics Engine starting ...");
+	LOG("Engine starting ...");
 
 	MainState state = CREATE;
 	int result = EXIT_FAILURE;

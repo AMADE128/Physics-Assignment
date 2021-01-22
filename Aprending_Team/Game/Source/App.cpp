@@ -3,7 +3,6 @@
 #include "Input.h"
 #include "Render.h"
 #include "Textures.h"
-#include "Physics.h"
 #include "Audio.h"
 #include "SceneManager.h"
 #include "Player.h"
@@ -24,7 +23,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	input = new Input();
 	render = new Render();
 	tex = new Textures();
-	physics = new Physics();
 	audio = new Audio();
 	sceneManager = new SceneManager(input, render, tex);
 	player = new Player();
@@ -36,16 +34,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(input);
 	AddModule(tex);
 	AddModule(audio);
-	AddModule(physics);
 	AddModule(sceneManager);
 	AddModule(player);
 	AddModule(hud);
 	// Render last to swap buffer
 	AddModule(render);
-
-	physics->active = false;
-	player->active = false;
-	hud->active = false;
 }
 
 // Destructor
@@ -298,8 +291,7 @@ bool App::PostUpdate()
 		if(pModule->active == false) {
 			continue;
 		}
-		if(item->data->name != "player")
-			ret = item->data->PostUpdate();
+		ret = item->data->PostUpdate();
 	}
 
 	return ret;

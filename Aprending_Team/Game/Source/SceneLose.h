@@ -33,6 +33,12 @@ public:
 
 private:
 
+	SDL_Texture* img;
+	SDL_Texture* imgTex;
+	int speed = 65;
+	int imgX = 0, imgY = 0, imgW = 0, imgH = 0;
+	bool transition;
+	bool keyPressed;
 };
 
 #endif // __SCENELOSE_H__

@@ -11,11 +11,7 @@ class Textures;
 
 enum class SceneType
 {
-	LOGO,
-	INTRO,
-	LEVEL1,
-	WIN,
-	LOSE
+	LEVEL1
 };
 
 class SceneControl

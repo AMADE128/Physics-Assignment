@@ -1,10 +1,6 @@
 #include "SceneManager.h"
 
-#include "SceneLogo.h"
-#include "SceneIntro.h"
 #include "Scene.h"
-#include "SceneWin.h"
-#include "SceneLose.h"
 
 #include "Input.h"
 #include "Render.h"
@@ -22,20 +18,10 @@
 SceneManager::SceneManager(Input* input, Render* render, Textures* tex) : Module()
 {
 	name.Create("scene_manager");
-
-	// Create new scenes
-	sceneLogo = new SceneLogo();
-	sceneIntro = new SceneIntro();
 	scene = new Scene();
-	sceneWin = new SceneWin();
-	sceneLose = new SceneLose();
 
-	// Add scene to the list
-	AddScene(sceneLogo, false);
-	AddScene(sceneIntro, false);
-	AddScene(scene, false);
-	AddScene(sceneWin, false);
-	AddScene(sceneLose, false);
+	AddScene(scene, true);
+
 
 	onTransition = false;
 	fadeOutCompleted = false;
@@ -62,7 +48,7 @@ bool SceneManager::Awake()
 // Called before the first frame
 bool SceneManager::Start()
 {
-	current = new SceneLogo();
+	current = new Scene();
 	current->Start();
 	next = nullptr;
 
@@ -72,8 +58,6 @@ bool SceneManager::Start()
 // Called each loop iteration
 bool SceneManager::PreUpdate()
 {
-	if (input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN) viewCollisions = !viewCollisions;
-
 	return true;
 }
 
@@ -81,6 +65,8 @@ bool SceneManager::PreUpdate()
 bool SceneManager::Update(float dt)
 {
 	bool ret = true;
+	if (!pause && (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) && (current->name == "scene"))
+		pause = !pause;
 
 	if (!onTransition)
 	{
@@ -129,24 +115,12 @@ bool SceneManager::Update(float dt)
 
 		switch (current->nextScene)
 		{
-		case SceneType::LOGO: next = new SceneLogo(); break;
-		case SceneType::INTRO: next = new SceneIntro(); break;
 		case SceneType::LEVEL1: next = new Scene(); break;
-		case SceneType::WIN: next = new SceneWin(); break;
-		case SceneType::LOSE: next = new SceneLose(); break;
 		default: break;
 		}
 
 		current->transitionRequired = false;
 	}
-
-	// If player press F1 the Scene 1 is load again
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-	{
-		current->TransitionToScene(SceneType::LEVEL1);
-		lastLevel = 1;
-	}
-	// If player press ESC the game is closed
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
@@ -179,6 +153,19 @@ bool SceneManager::CleanUp()
 	LOG("Freeing scene");
 	if (current != nullptr) current->CleanUp();
 
+	return true;
+}
+
+bool SceneManager::LoadState(pugi::xml_node& data)
+{
+	if (current->lastLevel == 1)current = scene;
+	current->LoadState(data);
+	return true;
+}
+
+bool SceneManager::SaveState(pugi::xml_node& data) const
+{
+	current->SaveState(data);
 	return true;
 }
 

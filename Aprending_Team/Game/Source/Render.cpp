@@ -46,7 +46,7 @@ bool Render::Awake(pugi::xml_node& config)
 		camera.w = app->win->screenSurface->w;
 		camera.h = app->win->screenSurface->h;
 		camera.x = 0;
-		camera.y = -11081 + app->win->height;
+		camera.y = 0;
 	}
 
 	return ret;
@@ -287,6 +287,14 @@ bool Render::DrawCircle2( int centreX, int centreY, int radius)
 		DrawLine(centreX + y, centreY + x, centreX - y, centreY - x, 255,0,0);
 		DrawLine(centreX - y, centreY - x, centreX - y, centreY + x, 255,0,0);
 		DrawLine(centreX - y, centreY + x, centreX + x, centreY - y, 255,0,0);
+		/*SDL_RenderDrawPoint(renderer, centreX + x, centreY - y);
+		SDL_RenderDrawPoint(renderer, centreX + x, centreY + y);
+		SDL_RenderDrawPoint(renderer, centreX - x, centreY - y);
+		SDL_RenderDrawPoint(renderer, centreX - x, centreY + y);
+		SDL_RenderDrawPoint(renderer, centreX + y, centreY - x);
+		SDL_RenderDrawPoint(renderer, centreX + y, centreY + x);
+		SDL_RenderDrawPoint(renderer, centreX - y, centreY - x);
+		SDL_RenderDrawPoint(renderer, centreX - y, centreY + x);*/
 		
 		if (error <= 0)
 		{

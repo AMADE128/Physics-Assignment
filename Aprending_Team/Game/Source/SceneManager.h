@@ -51,7 +51,12 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	bool GetViewCollisions() { return viewCollisions; };
+	// Load state game
+	bool LoadState(pugi::xml_node& data);
+	// Save state game
+	bool SaveState(pugi::xml_node& data)const;
+
+	bool GetViewRectangle() { return ViewRectangles; };
 
 private:
 
@@ -69,7 +74,7 @@ private:
 	bool pause = false;
 	List<SceneControl*> scenes;
 
-	bool viewCollisions = false;
+	bool ViewRectangles = false;
 
 public:
 	SceneLogo* sceneLogo;

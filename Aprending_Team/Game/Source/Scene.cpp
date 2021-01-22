@@ -35,11 +35,6 @@ bool Scene::Awake()
 // Called before the first frame
 bool Scene::Start()
 {
-	// Active Motor Engine
-	app->physics->Init();
-	app->physics->Start();
-
-
 	return true;
 }
 
@@ -52,7 +47,6 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-
 	return true;
 }
 
@@ -64,30 +58,14 @@ bool Scene::PostUpdate()
 	return ret;
 }
 
-void Scene::DrawStaticBodies(Body* body)
-{
-	
-}
-
-void Scene::CreateWalls(Body* body, fPoint position, float w, float h, BodyClass bodyClass)
-{
-	
-}
-
-void Scene::CreateEntity()
-{
-
-}
-
-void Scene::ComprobeStateAsteroids()
-{
-	
-}
-
 // Called before quitting
 bool Scene::CleanUp()
 {
+	if (!active)
+		return true;
+
 	LOG("Freeing scene");
+	active = false;
 
 	return true;
 }

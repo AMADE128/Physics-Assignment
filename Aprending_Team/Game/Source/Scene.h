@@ -3,8 +3,9 @@
 
 #include "Module.h"
 #include "Animation.h"
-#include "Physics.h"
 #include "SceneControl.h"
+
+struct SDL_Texture;
 
 class Scene : public SceneControl
 {
@@ -21,26 +22,20 @@ public:
 	// Called before the first frame
 	bool Start();
 
+
 	// Called before all Updates
 	bool PreUpdate();
 
 	// Called each loop iteration
 	bool Update(float dt);
 
-
 	// Called before all Updates
 	bool PostUpdate();
-
-	// Create Entities
-	void CreateWalls(Body* body, fPoint position, float w, float h, BodyClass bodyClass);
-	void CreateEntity();
-	void DrawStaticBodies(Body* wallDown);
 
 	// Called before quitting
 	bool CleanUp();
 
 private:
-
 };
 
 #endif // __SCENE_H__
