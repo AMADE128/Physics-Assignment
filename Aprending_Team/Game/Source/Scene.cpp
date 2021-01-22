@@ -35,6 +35,7 @@ bool Scene::Awake()
 // Called before the first frame
 bool Scene::Start()
 {
+	backgroundTex = app->tex->Load("Assets/Textures/background.png");
 	return true;
 }
 
@@ -53,6 +54,8 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
+	SDL_Rect backgroundRec = { 0, 0, 1280, 7108 };
+	app->render->DrawTexture(backgroundTex, 0, -6000, &backgroundRec);
 	bool ret = true;
 
 	return ret;
