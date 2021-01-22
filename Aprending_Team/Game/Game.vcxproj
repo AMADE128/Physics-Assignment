@@ -95,6 +95,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AprendingTeam.cpp" />
+    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Source\Font.cpp" />
     <ClCompile Include="Source\HUD.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -109,6 +112,9 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClInclude Include="AprendingTeam.h" />
+    <ClInclude Include="Body.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Font.h" />
     <ClInclude Include="Source\HUD.h" />

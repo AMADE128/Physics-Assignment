@@ -45,6 +45,15 @@
     <ClCompile Include="Source\HUD.cpp">
       <Filter>Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="AprendingTeam.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\App.h" />
@@ -120,6 +129,15 @@
     <ClInclude Include="Source\HUD.h">
       <Filter>Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="AprendingTeam.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -139,6 +157,9 @@
     </Filter>
     <Filter Include="Gameplay\Scenes">
       <UniqueIdentifier>{5041a905-aa71-42c3-81cd-08e3010ea04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motor">
+      <UniqueIdentifier>{db2c9b61-6ff9-475a-b09b-5e72eb76fc94}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

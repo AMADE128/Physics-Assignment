@@ -10,6 +10,7 @@
 #endif
 #define NULL  0
 
+#define G 0.0000000000667
 #define	WINDOW_W  1920	
 #define	WINDOW_H  1080
 
