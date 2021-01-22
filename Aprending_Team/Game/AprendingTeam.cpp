@@ -8,11 +8,11 @@ fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 
 	if (player.y < moonRange)
 	{
-		gravity = -gravityMoon + abs(G * mass / moonRadius);
+		gravity = -gravityMoon + fabs(G * mass / moonRadius);
 	}
 	else if (player.y > 6000 - earthRange)
 	{
-		gravity = gravityEarth + abs(G * mass / earthRadius);
+		gravity = gravityEarth + fabs(G * mass / earthRadius);
 	}
 	else
 		return { 0,0 };

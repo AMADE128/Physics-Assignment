@@ -18,7 +18,7 @@ enum class Class
 
 class Body
 {
-public: 
+public:
     //General
     float mass;
     int lives = 1;
@@ -33,10 +33,11 @@ public:
 
     //Forces
 
-   
 
-public: 
+
+public:
     // Methods
     void addForce();
     void addMomentum();
-}
+
+};
