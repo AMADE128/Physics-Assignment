@@ -206,7 +206,7 @@ void App::FinishUpdate()
 	if (loadConfigRequested == true) LoadGame(filenameConfig.GetString());
 	if (saveConfigRequested == true) SaveGame(filenameConfig.GetString());
 
-	float secondsSinceStartup = startupTime.ReadSec();
+	secondsSinceStartup = startupTime.ReadSec();
 	float averageFps = frameCount / secondsSinceStartup;
 
 	timeFramesSecond += dt;

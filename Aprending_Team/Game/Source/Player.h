@@ -5,6 +5,7 @@
 
 #include "Animation.h"
 #include "p2Point.h"
+#include "Body.h"
 
 enum State 
 {
@@ -45,6 +46,8 @@ public:
 	float acc;
 	int maxAcc;
 	int bombPos;
+	Body* ship;
+	PhysicsEngine *motor;
 private:
 
 	float velocity;
@@ -59,9 +62,7 @@ private:
 	Animation explosionAnim;
 	Animation meteorAnim;
 	Animation fireAnim;
-	Animation* currentAnimation = nullptr;
-
-	
+	Animation* currentAnimation = nullptr;	
 };
 
 #endif // _PLAYER_H_

@@ -45,21 +45,13 @@
     <ClCompile Include="Source\HUD.cpp">
       <Filter>Gameplay</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Source\Physics.cpp">
-=======
-    <ClCompile Include="Physics.cpp">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
       <Filter>Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="AprendingTeam.cpp">
+    <ClCompile Include="Source\Body.cpp">
       <Filter>Motor</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Source\AprendingTeam.cpp">
-=======
-    <ClCompile Include="Body.cpp">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
       <Filter>Motor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,21 +129,13 @@
     <ClInclude Include="Source\HUD.h">
       <Filter>Gameplay</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Source\Physics.h">
-=======
-    <ClInclude Include="Physics.h">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
       <Filter>Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="AprendingTeam.h">
+    <ClInclude Include="Source\Body.h">
       <Filter>Motor</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Source\AprendingTeam.h">
-=======
-    <ClInclude Include="Body.h">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
       <Filter>Motor</Filter>
     </ClInclude>
   </ItemGroup>

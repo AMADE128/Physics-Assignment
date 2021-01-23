@@ -1,5 +1,7 @@
 #include "Physics.h"
-#include "Source/Defs.h"
+#include "Defs.h"
+#include "Player.h"
+#include "App.h"
 
 Physics::Physics() : Module()
 {
