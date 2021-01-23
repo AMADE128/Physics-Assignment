@@ -46,11 +46,7 @@
       <Filter>Gameplay</Filter>
     </ClCompile>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClCompile Include="Source\Physics.cpp">
-=======
-    <ClCompile Include="Physics.cpp">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
 =======
     <ClCompile Include="Physics.cpp">
 >>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
@@ -60,11 +56,7 @@
       <Filter>Motor</Filter>
     </ClCompile>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClCompile Include="Source\AprendingTeam.cpp">
-=======
-    <ClCompile Include="Body.cpp">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
 =======
     <ClCompile Include="Body.cpp">
 >>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
@@ -146,11 +138,7 @@
       <Filter>Gameplay</Filter>
     </ClInclude>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClInclude Include="Source\Physics.h">
-=======
-    <ClInclude Include="Physics.h">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
 =======
     <ClInclude Include="Physics.h">
 >>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
@@ -160,11 +148,7 @@
       <Filter>Motor</Filter>
     </ClInclude>
 <<<<<<< HEAD
-<<<<<<< HEAD
     <ClInclude Include="Source\AprendingTeam.h">
-=======
-    <ClInclude Include="Body.h">
->>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
 =======
     <ClInclude Include="Body.h">
 >>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
