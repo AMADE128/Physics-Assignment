@@ -39,7 +39,11 @@ public:
 	fPoint directionVec = { 0,0 };
 	bool alive;
 	bool fire;
+	bool bomb;
+	bool win;
 	int angle;
+	float acc;
+	int maxAcc;
 private:
 
 	float velocity;
@@ -48,6 +52,8 @@ private:
 	SDL_Texture* meteorTex;
 	SDL_Texture* fireTex;
 	SDL_Texture* explosionTex;
+	SDL_Texture* winTex;
+	SDL_Texture* loseTex;
 	Animation explosionAnim;
 	Animation meteorAnim;
 	Animation fireAnim;

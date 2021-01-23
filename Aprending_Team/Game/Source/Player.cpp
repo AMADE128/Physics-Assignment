@@ -25,6 +25,8 @@ Player::~Player()
 
 bool Player::Start() 
 {
+	maxAcc = 8;
+	bomb = false;
 	fire = true;
 	active = true;
 	alive = true;
@@ -33,9 +35,11 @@ bool Player::Start()
 	explosionTex = app->tex->Load("Assets/Textures/explosion.png");
 	meteorTex = app->tex->Load("Assets/Textures/meteor.png");
 	fireTex = app->tex->Load("Assets/Textures/fire.png");
+	winTex = app->tex->Load("Assets/Textures/win.png");
+	loseTex = app->tex->Load("Assets/Textures/lose.png");
 	app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.ogg");
 	position.x = 640;
-	position.y = 65;
+	position.y = 70;
 
 	for (int i = 0; i < 384 * 6; i += 384)
 	{
@@ -75,12 +79,14 @@ bool Player::PreUpdate()
 	{
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
-			position.y -= 5;
+			if(acc<=maxAcc)acc +=0.05f;
 			fire = true;
+			position.y -= cos(angle * M_PI / 180) * acc;
+			position.x += sin(angle * M_PI / 180) * acc;
 		}
 		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
-			position.y += 5;
+			position.y -= 5;
 		}
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		{
@@ -95,14 +101,18 @@ bool Player::PreUpdate()
 			if (angle <= 0)angle = 360;
 
 		}
+		
 	}
 
 	//meteor harcoded hitbox (as all hitboxes will be cuz idk any other way rn)
 	if (position.x < 50 + 58 && position.x + 55 > 50 && position.y < 50 + 58 && position.y + 175 > 50) alive = false;
 
 	//No u cant go to the center of the earth Verne
-	if (position.y > 70) position.y = 70;
-
+	if (position.y > 70 && angle >= 355 && angle <= 5) position.y = 70;
+	else if (position.y > 70) alive = false;
+	//moon is solid
+	if (position.y < -5800 && angle >= 175 && angle <= 185) position.y = -5800;
+	else if (position.y < -5800) alive = false;
 	//enter to revive (as in real life)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) alive = true;
 
@@ -112,10 +122,10 @@ bool Player::PreUpdate()
 bool Player::Update(float dt) 
 {
 	//camera follows player up
-	if (app->render->camera.y - 250 < -(position.y))app->render->camera.y += 5;
+	if (app->render->camera.y - 250 < -(position.y))app->render->camera.y += cos(angle * M_PI / 180) * acc;
 
 	//camera follows player down
-	if (app->render->camera.y - 300 > -(position.y))app->render->camera.y -= 5;
+	if (app->render->camera.y - 300 > -(position.y))app->render->camera.y -= cos(angle * M_PI / 180) * acc;
 
 	if (position.x < -60 )position.x = 1280;
 	if (position.x > 1285 )position.x = -55;
@@ -125,16 +135,6 @@ bool Player::Update(float dt)
 
 bool Player::PostUpdate()
 {
-
-	//explosion trigger
-	if (alive == false && explosionAnim.HasFinished() == false)
-	{
-		Animation* explotion = &explosionAnim;
-		explotion->Update();
-		SDL_Rect explosionRec = explotion->GetCurrentFrame();
-		app->render->DrawTexture(explosionTex, position.x - 165, position.y - 100, &explosionRec);
-	}
-
 	//meteor texture
 	Animation* meteor = &meteorAnim;
 	meteor->Update();
@@ -158,6 +158,31 @@ bool Player::PostUpdate()
 		app->render->DrawTexture(rocketTex, position.x, position.y, &rocketRec, 1.0f, angle);
 	}
 
+	if (position.y == (-5800) && alive==true) 
+	{
+		bomb = true;
+	}
+
+	if (position.y == 0 && bomb == true && alive == true)
+	{
+		win = true;
+	}
+	//explosion trigger
+
+
+	if (alive == false && explosionAnim.HasFinished() == false)
+	{		
+		Animation* explotion = &explosionAnim;
+		explotion->Update();
+		SDL_Rect explosionRec = explotion->GetCurrentFrame();
+		app->render->DrawTexture(explosionTex, position.x - 165, position.y - 100, &explosionRec);
+	}
+
+	if (alive == false && explosionAnim.HasFinished() == true)
+	{
+		SDL_Rect loseSceen = { 0, 0, 1280, 720 };
+		app->render->DrawTexture(loseTex, 0, -app->render->camera.y, &loseSceen);
+	}
 	return true;	
 }
 
