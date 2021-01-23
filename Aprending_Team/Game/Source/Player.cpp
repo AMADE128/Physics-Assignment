@@ -82,8 +82,13 @@ bool Player::PreUpdate()
 		}
 	}
 
+	//meteor harcoded hitbox (as all hitboxes will be cuz idk any other way rn)
 	if (position.x < 50 + 58 && position.x + 55 > 50 && position.y < 50 + 58 && position.y + 175 > 50) alive = false;
 
+	//No u cant go to the center of the earth Verne
+	if (position.y > 70) position.y = 70;
+
+	//enter to revive (as in real life)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN) alive = true;
 
 	return true;
