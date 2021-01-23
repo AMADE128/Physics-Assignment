@@ -105,7 +105,7 @@ public:
 	Player* player;
 	HUD* hud;
 	//ModuleFonts* fonts;
-	float secondsSinceStartup;
+
 private:
 
 	int argc;

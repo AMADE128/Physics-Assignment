@@ -1,5 +1,5 @@
-#include "List.h"
-#include "p2Point.h"
+#include "Source/List.h"
+#include "Source/p2Point.h"
 #include "Body.h"
 
 class PhysicsEngine
@@ -10,7 +10,7 @@ public:
 	PhysicsEngine() {};
 	~PhysicsEngine() {};
 	fPoint CalculateGravity(iPoint player, float mass);
-	void ApplyForcesToWorld(Body* item);
+	void ApplyForcesToWorld(ListItem<Body*>* item);
 	void CalculateAcceleration(Body* b);
 	void MRUA(Body* body, float dt);
 
@@ -23,3 +23,4 @@ private:
 	int earthRadius;
 	int gravity;
 };
+

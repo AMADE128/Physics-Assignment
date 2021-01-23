@@ -1,5 +1,5 @@
 #include "AprendingTeam.h"
-#include "Defs.h"
+#include "Source/Defs.h"
 
 fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 {
@@ -24,22 +24,30 @@ fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 	return fg;
 }
 
-void PhysicsEngine::ApplyForcesToWorld(Body* item)
+void PhysicsEngine::ApplyForcesToWorld(ListItem<Body*>* item)
 {
-	fPoint FGravity = CalculateGravity(item->position, item->mass);
-	item->AddForce(FGravity);
+	for (item = bodies.start; item != NULL; item = item->next)
+	{
+		Body* b = item->data;
+		fPoint FGravity = CalculateGravity(b->position ,b->mass);
+		b->AddForce(FGravity);
+
+
+		if (item->data->GetVelocity().x <= 0 && item->data->GetClass() == Class::ENEMIES)
+		{
+			// MAAARRCCC
+		}
+	}
 }
 
 void PhysicsEngine::CalculateAcceleration(Body* body)
 {
 	//Using Newton's 2nd law F = m * a we get a = F / m
-	body->SetAcceleration({ body->GetForces().x / body->GetMass(), body->GetForces().y / body->GetMass() });
+	body->SetAcceleration({ body->GetForces().x / body->GetMass(), body->GetForces().y / body->GetMass()});
 }
 
 void PhysicsEngine::MRUA(Body* body, float dt)
 {
-	CalculateAcceleration(body);
-
 	//using MRUA formula x = x0 + v0*t + 1/2 a * t^2
 	iPoint pos;
 	pos.x = body->GetPosition().x + body->GetVelocity().x * dt + 0.5 * body->GetAcceleration().x * dt * dt;
@@ -51,4 +59,3 @@ void PhysicsEngine::MRUA(Body* body, float dt)
 	vel.y = body->GetVelocity().y + body->GetAcceleration().y * dt;
 	body->setVelocity(vel);
 }
-
