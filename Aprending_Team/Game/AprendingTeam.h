@@ -1,12 +1,16 @@
 #include "Source/List.h"
 #include "Source/p2Point.h"
+#include "Body.h"
 
 class PhysicsEngine
 {
 public:
+
+	List<Body*> bodies;
 	PhysicsEngine() {};
 	~PhysicsEngine() {};
 	fPoint CalculateGravity(iPoint player, float mass);
+	void ApplyForcesToWorld(ListItem<Body*>* item);
 
 private:
 	int gravityMoon = 2;

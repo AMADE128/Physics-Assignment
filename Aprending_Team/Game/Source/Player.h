@@ -6,6 +6,14 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+enum State 
+{
+	IDLE,
+	DEAD,
+	HIT,
+	FLY,
+	TURBO
+};
 
 class Player : public Module
 {
@@ -28,6 +36,7 @@ public:
 	bool CleanUp();
 
 	iPoint position;
+	fPoint directionVec = { 0,0 };
 	bool alive;
 	bool fire;
 private:
@@ -42,6 +51,7 @@ private:
 	Animation meteorAnim;
 	Animation fireAnim;
 	Animation* currentAnimation = nullptr;
+
 	
 };
 

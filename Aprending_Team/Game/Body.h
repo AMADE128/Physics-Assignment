@@ -28,9 +28,10 @@ public:
     float height;
     Class classType;
     //Lineal
-    fPoint position = { 0,0 };
+    iPoint position = { 0,0 };
     fPoint velocity = { 0,0 };
     fPoint acceleration = { 0,0 };
+    fPoint forces = { 0,0 };
     //Angular
 
     //Forces
@@ -39,11 +40,16 @@ public:
 
 public:
     // Methods
-    void addForce();
+    void addForce(fPoint force);
     void addMomentum();
     void SetMass(float _Mass) { mass = _Mass; };
     void SetLives(float _Lives) { lives = _Lives; };
     void SetClassType(Class type) { classType = type; };
+    void AddForce(fPoint force);
+    fPoint GetVelocity() { return velocity; };
+    Class GetClass() { return classType; };
+    iPoint GetPosition() { return position; };
+    fPoint GetAcceleration() { return acceleration; };
     //void SetDimension(float width)
 
 };

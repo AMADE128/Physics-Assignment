@@ -23,3 +23,19 @@ fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 
 	return fg;
 }
+
+void PhysicsEngine::ApplyForcesToWorld(ListItem<Body*>* item)
+{
+	for (item = bodies.start; item != NULL; item = item->next)
+	{
+		Body* b = item->data;
+		fPoint FGravity = CalculateGravity(b->position ,b->mass);
+		b->AddForce(FGravity);
+
+
+		if (item->data->GetVelocity().x <= 0 && item->data->GetClass() == Class::ENEMIES)
+		{
+			// MAAARRCCC
+		}
+	}
+}
