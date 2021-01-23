@@ -96,8 +96,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="Source\AprendingTeam.cpp" />
     <ClCompile Include="Source\Body.cpp" />
+=======
+    <ClCompile Include="AprendingTeam.cpp" />
+    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Physics.cpp" />
+>>>>>>> parent of a165a17... no va pero si va si le das al si y es como si todo no existe
 =======
     <ClCompile Include="AprendingTeam.cpp" />
     <ClCompile Include="Body.cpp" />
