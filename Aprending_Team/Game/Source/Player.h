@@ -44,6 +44,7 @@ public:
 	int angle;
 	float acc;
 	int maxAcc;
+	int bombPos;
 private:
 
 	float velocity;
@@ -54,6 +55,7 @@ private:
 	SDL_Texture* explosionTex;
 	SDL_Texture* winTex;
 	SDL_Texture* loseTex;
+	SDL_Texture* bombTex;
 	Animation explosionAnim;
 	Animation meteorAnim;
 	Animation fireAnim;
