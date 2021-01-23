@@ -1,5 +1,5 @@
 #include "AprendingTeam.h"
-#include "Source/Defs.h"
+#include "Defs.h"
 
 fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 {
