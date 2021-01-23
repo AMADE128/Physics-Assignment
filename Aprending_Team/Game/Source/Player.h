@@ -39,6 +39,7 @@ public:
 	fPoint directionVec = { 0,0 };
 	bool alive;
 	bool fire;
+	int angle;
 private:
 
 	float velocity;

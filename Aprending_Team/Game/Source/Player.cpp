@@ -51,9 +51,9 @@ bool Player::Start()
 	meteorAnim.loop = true;
 	meteorAnim.speed = 0.15f;
 
-	for (int i = 0; i < 26 * 8; i += 26)
+	for (int i = 0; i < 49 * 8; i += 49)
 	{
-		fireAnim.PushBack({ i, 0, 26, 52 });
+		fireAnim.PushBack({ i, 0, 49, 215 });
 	}
 	fireAnim.loop = true;
 	fireAnim.speed = 0.15f;
@@ -84,11 +84,16 @@ bool Player::PreUpdate()
 		}
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		{
-			position.x += 5;
+			//position.x += 5;
+			angle++;
+			if (angle >= 360)angle = 0;
 		}
 		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 		{
-			position.x -= 5;
+			//position.x -= 5;
+			angle--;
+			if (angle <= 0)angle = 360;
+
 		}
 	}
 
@@ -138,19 +143,19 @@ bool Player::PostUpdate()
 	app->render->DrawTexture(meteorTex, 50, 50, &meteorRec);
 
 	//fire anim
-	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT && alive == true)
 	{
 		Animation* fire = &fireAnim;
 		fire->Update();
 		SDL_Rect fireRec = fire->GetCurrentFrame();
-		app->render->DrawTexture(fireTex, position.x + 15, position.y + 165, &fireRec);
+		app->render->DrawTexture(fireTex, position.x, position.y, &fireRec, 1.0f,angle);
 	}
 
 	//player texture
-	if (alive == true)
+	else if (alive == true)
 	{
-		SDL_Rect rocketRec = { 0, 0, 50, 175 };
-		app->render->DrawTexture(rocketTex, position.x, position.y, &rocketRec);
+		SDL_Rect rocketRec = { 0, 0, 50, 215 };
+		app->render->DrawTexture(rocketTex, position.x, position.y, &rocketRec, 1.0f, angle);
 	}
 
 	return true;	

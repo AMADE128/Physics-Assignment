@@ -6,7 +6,3 @@ void Body::AddForce(fPoint force)
 	forces.y = force.y;
 }
 
-void Body::AddMomentum()
-{
-
-}
