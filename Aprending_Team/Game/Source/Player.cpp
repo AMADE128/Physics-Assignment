@@ -5,7 +5,6 @@
 #include "App.h"
 #include "SceneManager.h"
 #include "Scene.h"
-#include "AprendingTeam.h"
 
 #include "Log.h"
 #include "Defs.h"
@@ -26,7 +25,6 @@ Player::~Player()
 
 bool Player::Start() 
 {
-	motor = new PhysicsEngine;
 	maxAcc = 8;
 	bomb = false;
 	fire = true;
@@ -65,12 +63,6 @@ bool Player::Start()
 	fireAnim.loop = true;
 	fireAnim.speed = 0.15f;
 
-	ship = new Body;
-	ship->SetClassType(Class::PLAYER);
-	ship->SetMass(125.5f);
-	ship->SetPosition({ 640, 70 });
-	ship->SetBodyType(BodyType::DYNAMIC);
-
 	return true;
 }
 
@@ -85,25 +77,24 @@ bool Player::Awake(pugi::xml_node& config)
 bool Player::PreUpdate() 
 {
 	if (alive == true) 
-	{		
+	{
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
 			if(acc<=maxAcc)acc +=0.05f;
-			ship->AddForce({ sin(angle * M_PI / 180) * acc,cos(angle * M_PI / 180) * acc });
 			fire = true;
 		}
 		else if (acc > 0)acc -= 0.05;
 		if (acc < 0)acc = 0;
-		//position.y -= cos(angle * M_PI / 180) * acc;
-		//position.x += sin(angle * M_PI / 180) * acc;
-		
+		position.y -= cos(angle * M_PI / 180) * acc;
+		position.x += sin(angle * M_PI / 180) * acc;
+
 		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
-			ship->position.y -= 5;
+			position.y -= 5;
 		}
 		if (app->input->GetKey(SDL_SCANCODE_P) == KEY_REPEAT)
 		{
-			ship->position.x += 5;
+			position.y += 5;
 		}
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		{
@@ -117,54 +108,47 @@ bool Player::PreUpdate()
 			angle--;
 			if (angle <= 0)angle = 360;
 
-		}		
+		}
+		
+		
 	}
 
 	//meteor harcoded hitbox (as all hitboxes will be cuz idk any other way rn)
-	if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
+	if (position.x < 50 + 58 && position.x + 55 > 50 && position.y < 50 + 58 && position.y + 175 > 50) alive = false;
 
 	//No u cant go to the center of the earth Verne
-	if (ship->position.y > 70 && angle > 355 || ship->position.y > 70 && angle < 5) ship->position.y = 70;
-	else if (ship->position.y > 70) alive = false;
+	if (position.y > 70 && angle > 355 || position.y > 70 && angle < 5) position.y = 70;
+	else if (position.y > 70) alive = false;
 	
 	
 	
 	//moon is solid
-	if (ship->position.y <= -5800 && angle >= 175 && angle <= 185)
+	if (position.y <= -5800 && angle >= 175 && angle <= 185)
 	{
-		ship->position.y = -5800;
+		position.y = -5800;
 		bomb = true;
-		bombPos = ship->position.x;
+		bombPos = position.x;
 	}
 
-	if (ship->position.y == (-5800) && alive == true)
+	if (position.y == (-5800) && alive == true)
 	{
 		bomb = true;
 	}
 
-	if (ship->position.y == 70 && bomb == true && alive == true)
+	if (position.y == 70 && bomb == true && alive == true)
 	{
 		win = true;
 	}
 	
-	else if (ship->position.y < -5800) alive = false;
+	else if (position.y < -5800) alive = false;
 	//enter to revive (as in real life)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		alive = true;
-		ship->position.y = 70;
+		position.y = 70;
 		angle = 0;
 		acc = 0;
 		bomb = false;
-		win = false;
-	}
-
-	if (alive == true)
-	{
-		motor->ApplyForcesToWorld(app->player->ship);
-
-		motor->MRUA(ship, app->secondsSinceStartup);
-
 	}
 	return true;
 }
@@ -173,14 +157,14 @@ bool Player::Update(float dt)
 {
 	//camera follows player up
 
-	if (app->render->camera.y - 250 < -(ship->position.y))app->render->camera.y = -ship->position.y + 250;
+	if (app->render->camera.y - 250 < -(position.y))app->render->camera.y = -position.y + 250;
 
 	//camera follows player down
 
-	if (app->render->camera.y - 300 > -(ship->position.y))app->render->camera.y = -ship->position.y + 300;
+	if (app->render->camera.y - 300 > -(position.y))app->render->camera.y = -position.y + 300;
 
-	if (ship->position.x < -60 )ship->position.x = 1280;
-	if (ship->position.x > 1285 )ship->position.x = -55;
+	if (position.x < -60 )position.x = 1280;
+	if (position.x > 1285 )position.x = -55;
 
 	return true;
 }
@@ -207,14 +191,14 @@ bool Player::PostUpdate()
 		Animation* fire = &fireAnim;
 		fire->Update();
 		SDL_Rect fireRec = fire->GetCurrentFrame();
-		app->render->DrawTexture(fireTex, ship->position.x, ship->position.y, &fireRec, 1.0f,angle);
+		app->render->DrawTexture(fireTex, position.x, position.y, &fireRec, 1.0f,angle);
 	}
 
 	//player texture
 	else if (alive == true)
 	{
 		SDL_Rect rocketRec = { 0, 0, 50, 215 };
-		app->render->DrawTexture(rocketTex, ship->position.x, ship->position.y, &rocketRec, 1.0f, angle);
+		app->render->DrawTexture(rocketTex, position.x, position.y, &rocketRec, 1.0f, angle);
 	}
 
 	
@@ -224,7 +208,7 @@ bool Player::PostUpdate()
 		Animation* explotion = &explosionAnim;
 		explotion->Update();
 		SDL_Rect explosionRec = explotion->GetCurrentFrame();
-		app->render->DrawTexture(explosionTex, ship->position.x - 165, ship->position.y - 100, &explosionRec);
+		app->render->DrawTexture(explosionTex, position.x - 165, position.y - 100, &explosionRec);
 	}
 
 	//lose screen print
