@@ -11,6 +11,7 @@ public:
 	~PhysicsEngine() {};
 	fPoint CalculateGravity(iPoint player, float mass);
 	void ApplyForcesToWorld(ListItem<Body*>* item);
+	void CalculateAcceleration(Body* b);
 
 private:
 	int gravityMoon = 2;

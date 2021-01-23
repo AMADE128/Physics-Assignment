@@ -40,16 +40,18 @@ public:
 
 public:
     // Methods
-    void addForce(fPoint force);
-    void addMomentum();
     void SetMass(float _Mass) { mass = _Mass; };
     void SetLives(float _Lives) { lives = _Lives; };
     void SetClassType(Class type) { classType = type; };
+    void SetAcceleration(fPoint acc) { acceleration = acc; };
     void AddForce(fPoint force);
+    fPoint GetForces() { return forces; };
     fPoint GetVelocity() { return velocity; };
+    float GetMass() { return mass; };
     Class GetClass() { return classType; };
     iPoint GetPosition() { return position; };
     fPoint GetAcceleration() { return acceleration; };
+
     //void SetDimension(float width)
 
 };

@@ -39,3 +39,9 @@ void PhysicsEngine::ApplyForcesToWorld(ListItem<Body*>* item)
 		}
 	}
 }
+
+void PhysicsEngine::CalculateAcceleration(Body* body)
+{
+	//Using Newton's 2nd law F = m * a we get a = F / m
+	body->SetAcceleration({ body->GetForces().x / body->GetMass(), body->GetForces().y / body->GetMass()});
+}
