@@ -45,14 +45,14 @@
     <ClCompile Include="Source\HUD.cpp">
       <Filter>Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ApredingTeam.cpp">
-      <Filter>Motor</Filter>
+    <ClCompile Include="Source\Physics.cpp">
+      <Filter>Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="Source\Body.cpp">
       <Filter>Motor</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Physics.cpp">
-      <Filter>Gameplay</Filter>
+    <ClCompile Include="Source\AprendingTeam.cpp">
+      <Filter>Motor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,14 +129,14 @@
     <ClInclude Include="Source\HUD.h">
       <Filter>Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AprendingTeam.h">
-      <Filter>Motor</Filter>
+    <ClInclude Include="Source\Physics.h">
+      <Filter>Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="Source\Body.h">
       <Filter>Motor</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Physics.h">
-      <Filter>Gameplay</Filter>
+    <ClInclude Include="Source\AprendingTeam.h">
+      <Filter>Motor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
