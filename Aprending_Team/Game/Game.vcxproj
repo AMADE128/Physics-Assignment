@@ -95,7 +95,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\AprendingTeam.cpp" />
+    <ClCompile Include="Source\ApredingTeam.cpp" />
     <ClCompile Include="Source\Body.cpp" />
     <ClCompile Include="Source\Font.cpp" />
     <ClCompile Include="Source\HUD.cpp" />
