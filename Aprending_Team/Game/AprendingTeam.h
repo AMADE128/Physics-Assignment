@@ -12,6 +12,7 @@ public:
 	fPoint CalculateGravity(iPoint player, float mass);
 	void ApplyForcesToWorld(ListItem<Body*>* item);
 	void CalculateAcceleration(Body* b);
+	void MRUA(Body* body, float dt);
 
 private:
 	int gravityMoon = 2;

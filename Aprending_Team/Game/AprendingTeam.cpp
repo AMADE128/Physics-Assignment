@@ -45,3 +45,17 @@ void PhysicsEngine::CalculateAcceleration(Body* body)
 	//Using Newton's 2nd law F = m * a we get a = F / m
 	body->SetAcceleration({ body->GetForces().x / body->GetMass(), body->GetForces().y / body->GetMass()});
 }
+
+void PhysicsEngine::MRUA(Body* body, float dt)
+{
+	//using MRUA formula x = x0 + v0*t + 1/2 a * t^2
+	iPoint pos;
+	pos.x = body->GetPosition().x + body->GetVelocity().x * dt + 0.5 * body->GetAcceleration().x * dt * dt;
+	pos.y = body->GetPosition().y + body->GetVelocity().y * dt + 0.5 * body->GetAcceleration().y * dt * dt;
+	body->SetPosition(pos);
+
+	fPoint vel;
+	vel.x = body->GetVelocity().x + body->GetAcceleration().x * dt;
+	vel.y = body->GetVelocity().y + body->GetAcceleration().y * dt;
+	body->setVelocity(vel);
+}

@@ -44,6 +44,8 @@ public:
     void SetLives(float _Lives) { lives = _Lives; };
     void SetClassType(Class type) { classType = type; };
     void SetAcceleration(fPoint acc) { acceleration = acc; };
+    void setVelocity(fPoint vel) { velocity = vel; };
+    void SetPosition(iPoint pos) {position = pos; };
     void AddForce(fPoint force);
     fPoint GetForces() { return forces; };
     fPoint GetVelocity() { return velocity; };
