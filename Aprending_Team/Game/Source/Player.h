@@ -29,15 +29,18 @@ public:
 
 	iPoint position;
 	bool alive;
+	bool fire;
 private:
 
 	float velocity;
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* rocketTex;
 	SDL_Texture* meteorTex;
+	SDL_Texture* fireTex;
 	SDL_Texture* explosionTex;
 	Animation explosionAnim;
 	Animation meteorAnim;
+	Animation fireAnim;
 	Animation* currentAnimation = nullptr;
 	
 };
