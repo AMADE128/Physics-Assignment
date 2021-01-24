@@ -52,6 +52,13 @@ void PhysicsEngine::MRUA(Body* body, float dt)
 	fPoint vel;
 	vel.x = body->GetVelocity().x + body->GetAcceleration().x * dt;
 	vel.y = body->GetVelocity().y + body->GetAcceleration().y * dt;
-	if (body->GetVelocity().y < -4 || body->GetVelocity().y > 4) body->setVelocity({ 0, -4 });
+	if (body->GetVelocity().y < -6)
+	{
+		body->setVelocity({ 0, -6 });
+	}
+	else if (body->GetVelocity().y > 6)
+	{
+		body->setVelocity({ 0, 6 });
+	}
 	else body->setVelocity(vel);
 }
