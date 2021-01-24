@@ -25,7 +25,7 @@ Player::~Player()
 
 bool Player::Start() 
 {
-	maxAcc = 40;
+	maxAcc = 20.0f;
 	bomb = false;
 	fire = true;
 	active = true;
@@ -85,10 +85,16 @@ bool Player::PreUpdate()
 		ship->ResetForce();
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
-			if (acc <= maxAcc)acc += 0.2f;
-			addForceX += sin(angle * M_PI / 180) * acc;
-			addForceY -= cos(angle * M_PI / 180) * acc;
-			ship->AddForce({ addForceX, addForceY });
+			if (acc <= maxAcc)acc += 0.1f;
+			addForceX = sin(angle * M_PI / 180) * acc;
+			if (addForceX > 100) addForceX = 100;
+			else if (addForceX < -100) addForceX = -100;
+			addForceY = -cos(angle * M_PI / 180) * acc;
+			if (addForceY > 100) addForceX = 100;
+			else if (addForceY < -100) addForceX = -100;
+
+			ship->AddForce({ addForceX , addForceY });
+			
 			fire = true;
 			landed = false;
 		}
@@ -120,7 +126,7 @@ bool Player::PreUpdate()
 	}
 
 	//meteor harcoded hitbox (as all hitboxes will be cuz idk any other way rn)
-	if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
+	//if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
 
 	//No you cant go to the center of the earth Verne
 	if (ship->position.y > 70 && angle > 355|| ship->position.y > 70 && angle < 5)
