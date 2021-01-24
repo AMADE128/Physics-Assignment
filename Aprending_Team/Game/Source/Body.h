@@ -47,6 +47,7 @@ public:
     void setVelocity(fPoint vel) { velocity = vel; };
     void SetPosition(iPoint pos) {position = pos; };
     void AddForce(fPoint force);
+    void ResetForce() { forces = { 0,0 };};
     fPoint GetForces() { return forces; };
     fPoint GetVelocity() { return velocity; };
     float GetMass() { return mass; };

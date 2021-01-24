@@ -82,19 +82,16 @@ bool Player::PreUpdate()
 {
 	if (alive == true) 
 	{
+		ship->ResetForce();
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
 			if(acc<=maxAcc)acc +=0.05f;
-			ship->AddForce({ 0, 2.0f});
+			ship->AddForce({ 0, -(20.0f + acc)});
 			fire = true;
 			landed = false;
 		}
 		else if (acc > 0)acc -= 0.05;
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		{
-			ship->position.y -= 5;
-		}
 		if (app->input->GetKey(SDL_SCANCODE_P) == KEY_REPEAT)
 		{
 			ship->position.y += 5;
@@ -116,7 +113,7 @@ bool Player::PreUpdate()
 		if(landed != true)
 		{
 			motor->ApplyForcesToWorld(ship);
-			motor->MRUA(ship, app->secondsSinceStartup);
+			motor->MRUA(ship, 1);
 		}
 	}
 

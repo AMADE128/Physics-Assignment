@@ -66,6 +66,7 @@ public:
 	int GetFramesOnLastSecond() { return framesOnLastSecond; };
 	
 	float secondsSinceStartup;
+	float shipDt;
 
 private:
 
