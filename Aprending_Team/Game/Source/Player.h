@@ -49,6 +49,8 @@ public:
 	float acc;
 	int maxAcc;
 	int bombPos;
+	float addForceX;
+	float addForceY;
 	PhysicsEngine* motor;
 	Body* ship;
 

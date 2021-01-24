@@ -25,7 +25,7 @@ Player::~Player()
 
 bool Player::Start() 
 {
-	maxAcc = 8;
+	maxAcc = 40;
 	bomb = false;
 	fire = true;
 	active = true;
@@ -85,8 +85,10 @@ bool Player::PreUpdate()
 		ship->ResetForce();
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
-			if(acc<=maxAcc)acc +=0.05f;
-			ship->AddForce({ 0, -(20.0f + acc)});
+			if (acc <= maxAcc)acc += 0.2f;
+			addForceX += sin(angle * M_PI / 180) * acc;
+			addForceY -= cos(angle * M_PI / 180) * acc;
+			ship->AddForce({ addForceX, addForceY });
 			fire = true;
 			landed = false;
 		}
