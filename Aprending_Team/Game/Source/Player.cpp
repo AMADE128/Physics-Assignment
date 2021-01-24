@@ -40,7 +40,7 @@ bool Player::Start()
 	loseTex = app->tex->Load("Assets/Textures/lose.png");
 	oceanTex = app->tex->Load("Assets/Textures/ocean.png");
 	cloudTex = app->tex->Load("Assets/Textures/clouds.png");
-	fxWin = app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.wav");
+	fxWin = app->audio->PlayMusic("Assets/Audio/Hymn.wav");
 	app->fxList.Add(&fxWin);
 
 
