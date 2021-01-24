@@ -144,16 +144,19 @@ bool Player::PreUpdate()
 	//if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
 
 	//No you cant go to the center of the earth Verne
-	if (ship->position.y > 70 && angle > 355 && bomb == false && ship->velocity.y < 3.0f && ship->velocity.x < 3.0f || ship->position.y > 70 && angle < 5 && bomb == false && velocity < 100 && ship->velocity.y < 5.0f && ship->velocity.x < 5.0f)
+	if (ship->position.y > 70 && angle > 355  && ship->velocity.y < 3.0f && ship->velocity.x < 3.0f || ship->position.y > 70 && angle < 5  && velocity < 100 && ship->velocity.y < 5.0f && ship->velocity.x < 5.0f)
 	{
 		ship->setVelocity({ 0, 0 }); 
 		ship->SetAcceleration({ 0,-2000000 });
 		ship->SetPosition({ ship->position.x, 70 });
 		landed = true;
 	}
-	else if(ship->position.y > 75 && bomb == false ) alive = false;
+	else if(ship->position.y > 75 ) alive = false;
 	
-	
+	if (ship->position.y == 70 && alive == true && bomb == true)
+	{
+		win = true;
+	}
 	
 	//moon is solid
 	if (ship->position.y <= -5800 && angle >= 175 && angle <= 185 && ship->velocity.y > -3.0f && ship->velocity.x < 3.0f && ship->velocity.x > -3.0f)
@@ -225,11 +228,11 @@ bool Player::PostUpdate()
 	}
 
 	//ocean print
-	if (bomb == true)
+	/*if (bomb == true)
 	{
 		SDL_Rect oceanRec = { 0, 0, 1280, 1900 };
-		app->render->DrawTexture(oceanTex, 0, -1225, &oceanRec);
-	}
+		app->render->DrawTexture(oceanTex, 0, -1025, &oceanRec);
+	}*/
 	//fire anim
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT && alive == true)
 	{
