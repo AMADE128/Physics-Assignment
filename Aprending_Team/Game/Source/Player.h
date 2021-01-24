@@ -3,8 +3,10 @@
 
 #include "Textures.h"
 
+#include "Defs.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "AprendingTeam.h"
 
 enum State 
 {
@@ -35,16 +37,21 @@ public:
 
 	bool CleanUp();
 
+	iPoint startingPos = { PIXEL_TO_METERS(6000), PIXEL_TO_METERS(70) };
 	iPoint position;
 	fPoint directionVec = { 0,0 };
 	bool alive;
 	bool fire;
 	bool bomb;
 	bool win;
+	bool landed = false;
 	int angle;
 	float acc;
 	int maxAcc;
 	int bombPos;
+	PhysicsEngine* motor;
+	Body* ship;
+
 private:
 
 	float velocity;

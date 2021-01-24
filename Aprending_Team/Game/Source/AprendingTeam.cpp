@@ -10,7 +10,7 @@ fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 	{
 		gravity = -gravityMoon + fabs(G * mass / moonRadius);
 	}
-	else if (player.y > 6000 - earthRange)
+	else if (player.y > earthRange)
 	{
 		gravity = gravityEarth + fabs(G * mass / earthRadius);
 	}
@@ -24,20 +24,12 @@ fPoint PhysicsEngine::CalculateGravity(iPoint player, float mass)
 	return fg;
 }
 
-void PhysicsEngine::ApplyForcesToWorld(ListItem<Body*>* item)
+void PhysicsEngine::ApplyForcesToWorld(Body* body)
 {
-	for (item = bodies.start; item != NULL; item = item->next)
-	{
-		Body* b = item->data;
-		fPoint FGravity = CalculateGravity(b->position ,b->mass);
-		b->AddForce(FGravity);
+	
+		fPoint FGravity = CalculateGravity(body->position ,body->mass);
+		body->AddForce(FGravity);
 
-
-		if (item->data->GetVelocity().x <= 0 && item->data->GetClass() == Class::ENEMIES)
-		{
-			// MAAARRCCC
-		}
-	}
 }
 
 void PhysicsEngine::CalculateAcceleration(Body* body)
@@ -48,14 +40,18 @@ void PhysicsEngine::CalculateAcceleration(Body* body)
 
 void PhysicsEngine::MRUA(Body* body, float dt)
 {
+	CalculateAcceleration(body);
 	//using MRUA formula x = x0 + v0*t + 1/2 a * t^2
+	if (body->GetAcceleration().y >= 1 || body->GetAcceleration().y < -1) body->SetAcceleration({ 0,0 });
 	iPoint pos;
-	pos.x = body->GetPosition().x + body->GetVelocity().x * dt + 0.5 * body->GetAcceleration().x * dt * dt;
+	(pos.x) = body->GetPosition().x + body->GetVelocity().x * dt + 0.5 * body->GetAcceleration().x * dt * dt;
 	pos.y = body->GetPosition().y + body->GetVelocity().y * dt + 0.5 * body->GetAcceleration().y * dt * dt;
+	PIXEL_TO_METERS(pos.x); PIXEL_TO_METERS(pos.y);
 	body->SetPosition(pos);
 
 	fPoint vel;
 	vel.x = body->GetVelocity().x + body->GetAcceleration().x * dt;
 	vel.y = body->GetVelocity().y + body->GetAcceleration().y * dt;
-	body->setVelocity(vel);
+	if (body->GetVelocity().y < -4 || body->GetVelocity().y > 4) body->setVelocity({ 0, -4 });
+	else body->setVelocity(vel);
 }
