@@ -38,7 +38,7 @@ bool Scene::Start()
 	backgroundTex = app->tex->Load("Assets/Textures/background.png");
 	moonTex = app->tex->Load("Assets/Textures/moon.png");
 	earthTex = app->tex->Load("Assets/Textures/earth.png");
-	cloudTex = app->tex->Load("Assets/Textures/clouds.png");
+	
 	return true;
 }
 
@@ -66,8 +66,7 @@ bool Scene::PostUpdate()
 	SDL_Rect earthRec = { 0, 0, 1280, 1000 };
 	app->render->DrawTexture(earthTex, 0, 110, &earthRec);
 
-	SDL_Rect cloudRec = { 0, 0, 2360, 984 };
-	app->render->DrawTexture(cloudTex, -500, -1500, &cloudRec); 
+	
 	
 	
 	bool ret = true;
@@ -83,8 +82,7 @@ bool Scene::CleanUp()
 	app->tex->UnLoad(backgroundTex);
 	app->tex->UnLoad(moonTex);
 	app->tex->UnLoad(earthTex);
-	app->tex->UnLoad(cloudTex);
-
+	
 	LOG("Freeing scene");
 	active = false;
 

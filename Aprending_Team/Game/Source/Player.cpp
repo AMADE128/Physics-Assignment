@@ -39,6 +39,7 @@ bool Player::Start()
 	bombTex = app->tex->Load("Assets/Textures/bomb.png");
 	loseTex = app->tex->Load("Assets/Textures/lose.png");
 	oceanTex = app->tex->Load("Assets/Textures/ocean.png");
+	cloudTex = app->tex->Load("Assets/Textures/clouds.png");
 	fxWin = app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.wav");
 	app->fxList.Add(&fxWin);
 
@@ -107,19 +108,24 @@ bool Player::PreUpdate()
 		{
 			ship->position.y += 5;
 		}
-		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		{
-			//position.x += 5;
-			angle++;
-			if (angle >= 360)angle = 0;
-		}
-		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		{
-			//position.x -= 5;
-			angle--;
-			if (angle <= 0)angle = 360;
 
+		if (landed == false)
+		{
+			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+			{
+				//position.x += 5;
+				angle++;
+				if (angle >= 360)angle = 0;
+			}
+			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			{
+				//position.x -= 5;
+				angle--;
+				if (angle <= 0)angle = 360;
+
+			}
 		}
+
 		if(landed != true)
 		{
 			motor->ApplyForcesToWorld(ship);
@@ -138,36 +144,35 @@ bool Player::PreUpdate()
 	//if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
 
 	//No you cant go to the center of the earth Verne
-	if (ship->position.y > 70 && angle > 355|| ship->position.y > 70 && angle < 5)
+	if (ship->position.y > 70 && angle > 355 && bomb == false && ship->velocity.y < 3.0f && ship->velocity.x < 3.0f || ship->position.y > 70 && angle < 5 && bomb == false && velocity < 100 && ship->velocity.y < 5.0f && ship->velocity.x < 5.0f)
 	{
 		ship->setVelocity({ 0, 0 }); 
 		ship->SetAcceleration({ 0,-2000000 });
 		ship->SetPosition({ ship->position.x, 70 });
 		landed = true;
 	}
-	else if(ship->position.y > 75) alive = false;
+	else if(ship->position.y > 75 && bomb == false ) alive = false;
 	
 	
 	
 	//moon is solid
-	if (ship->position.y <= -5800 && angle >= 175 && angle <= 185)
+	if (ship->position.y <= -5800 && angle >= 175 && angle <= 185 && ship->velocity.y > -3.0f && ship->velocity.x < 3.0f && ship->velocity.x > -3.0f)
 	{
 		ship->position.y = -5800;
 		bomb = true;
 		bombPos = ship->position.x;
 	}
-
+	else if (ship->position.y <= -5800)
+	{
+		alive = false;
+	}
 	if (ship->position.y == (-5800) && alive == true)
 	{
 		bomb = true;
 	}
-
-	if (ship->position.y == 70 && bomb == true && alive == true)
-	{
-		win = true;
-	}
 	
 	else if (ship->position.y < -5800) alive = false;
+
 	//enter to revive (as in real life)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
@@ -176,6 +181,8 @@ bool Player::PreUpdate()
 		angle = 0;
 		acc = 0;
 		bomb = false;
+		ship->velocity.x = 0.0f;
+		ship->velocity.y = 0.0f;
 	}
 	return true;
 }
@@ -188,7 +195,11 @@ bool Player::Update(float dt)
 
 	//camera follows player down
 
-	if (app->render->camera.y - 300 > -(ship->position.y))app->render->camera.y = -ship->position.y + 300;
+	if (app->render->camera.y - 300 > -(ship->position.y))
+	{
+		app->render->camera.y = -ship->position.y + 300;
+		if (app->render->camera.y < 0)app->render->camera.y = 0;
+	}
 
 	if (ship->position.x < -60 )ship->position.x = 1280;
 	if (ship->position.x > 1285 )ship->position.x = -55;
@@ -213,6 +224,12 @@ bool Player::PostUpdate()
 		app->render->DrawTexture(bombTex, bombPos, -5800, &bombRec);
 	}
 
+	//ocean print
+	if (bomb == true)
+	{
+		SDL_Rect oceanRec = { 0, 0, 1280, 1900 };
+		app->render->DrawTexture(oceanTex, 0, -1225, &oceanRec);
+	}
 	//fire anim
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT && alive == true)
 	{
@@ -238,6 +255,13 @@ bool Player::PostUpdate()
 		SDL_Rect explosionRec = explotion->GetCurrentFrame();
 		app->render->DrawTexture(explosionTex, ship->position.x - 165, ship->position.y - 100, &explosionRec);
 	}
+
+	
+
+	SDL_Rect cloudRec = { 0, 0, 2360, 984 };
+	app->render->DrawTexture(cloudTex, -500, -1500, &cloudRec);
+
+	
 
 	//lose screen print
 	if (alive == false && explosionAnim.HasFinished() == true)
@@ -268,6 +292,8 @@ bool Player::CleanUp()
 	app->tex->UnLoad(winTex);
 	app->tex->UnLoad(loseTex);
 	app->tex->UnLoad(bombTex);
+	app->tex->UnLoad(cloudTex);
+
 
 	app->audio->UnloadFX(fxWin);
 	app->fxList.Clear();

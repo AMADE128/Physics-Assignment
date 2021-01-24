@@ -38,7 +38,6 @@ public:
 	SDL_Texture* backgroundTex;
 	SDL_Texture* moonTex;
 	SDL_Texture* earthTex;
-	SDL_Texture* cloudTex;
 
 private:
 };
