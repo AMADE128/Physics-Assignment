@@ -135,6 +135,7 @@ private:
 	uint32 framesOnLastSecond = 0;
 	uint32 lastFrameMs = 0;
 	float dt = 0.0f;
+	float dtaux = 0.0f;
 	float perfTime;
 	float oldLastFrame = 0.0f;
 	float timeFramesSecond = 0.0f;

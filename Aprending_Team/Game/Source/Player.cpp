@@ -124,14 +124,14 @@ bool Player::PreUpdate()
 	if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
 
 	//No you cant go to the center of the earth Verne
-	if (ship->position.y > 70 && angle > 355 && fire == false|| ship->position.y > 70 && angle < 5 && fire == false)
+	if (ship->position.y > 70 && angle > 355|| ship->position.y > 70 && angle < 5)
 	{
 		ship->setVelocity({ 0, 0 }); 
-		ship->SetAcceleration({ 0, 0 }); 
+		ship->SetAcceleration({ 0,-2000000 });
 		ship->SetPosition({ ship->position.x, 70 });
 		landed = true;
 	}
-	//else if(ship->position.y > 70) alive = false;
+	else if(ship->position.y > 75) alive = false;
 	
 	
 	

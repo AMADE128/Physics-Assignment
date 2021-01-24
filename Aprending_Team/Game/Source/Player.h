@@ -37,7 +37,7 @@ public:
 
 	bool CleanUp();
 
-	iPoint startingPos = { PIXEL_TO_METERS(6000), PIXEL_TO_METERS(70) };
+	iPoint startingPos = { PIXEL_TO_METERS(6000), PIXEL_TO_METERS(-2000) };
 	iPoint position;
 	fPoint directionVec = { 0,0 };
 	bool alive;
