@@ -106,6 +106,10 @@ public:
 	SceneManager* sceneManager;
 	Player* player;
 	HUD* hud;
+
+	List<unsigned int*>	fxList;
+	int volumeMusic = 64;
+	int volumeFX = 64;
 	//ModuleFonts* fonts;
 
 private:

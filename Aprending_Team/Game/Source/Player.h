@@ -65,6 +65,8 @@ private:
 	SDL_Texture* winTex;
 	SDL_Texture* loseTex;
 	SDL_Texture* bombTex;
+	SDL_Texture* oceanTex;
+	unsigned int fxWin;
 	Animation explosionAnim;
 	Animation meteorAnim;
 	Animation fireAnim;

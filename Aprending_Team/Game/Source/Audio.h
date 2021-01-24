@@ -24,24 +24,26 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	bool FxCleanUp();
+
 	// Play a music file
 	bool PlayMusic(const char* path, float fadeTime = DEFAULT_MUSIC_FADE_TIME);
 
 	// Load a WAV in memory
 	unsigned int LoadFx(const char* path);
-	bool Unload1Fx(int index);
-	bool UnloadFxs();
 
 	// Play a previously loaded WAV
-	bool PlayFx(int channel, unsigned int fx, int volume = 100);
+	bool PlayFx(unsigned int fx, int repeat = 0);
+	bool UnloadFX(int id);
 
-private:
+	bool SetVolumeFx(unsigned int id, int volume);
+	bool SetVolumeMusic(_Mix_Music* music, int volume);
 
-	_Mix_Music* music;
 	Mix_Chunk* fx[MAX_FX] = { nullptr };
 
-	uint volumeMusic = 100;
-	uint volumeFx = 100;
+	_Mix_Music* music;
+
+private:
 };
 
 #endif // __AUDIO_H__

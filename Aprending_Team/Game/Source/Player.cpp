@@ -38,7 +38,10 @@ bool Player::Start()
 	winTex = app->tex->Load("Assets/Textures/win.png");
 	bombTex = app->tex->Load("Assets/Textures/bomb.png");
 	loseTex = app->tex->Load("Assets/Textures/lose.png");
-	app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.ogg");
+	oceanTex = app->tex->Load("Assets/Textures/ocean.png");
+	fxWin = app->audio->PlayMusic("Output/Assets/Audio/Music/Hymn.wav");
+	app->fxList.Add(&fxWin);
+
 
 	for (int i = 0; i < 384 * 6; i += 384)
 	{
@@ -117,11 +120,17 @@ bool Player::PreUpdate()
 			if (angle <= 0)angle = 360;
 
 		}
-
 		if(landed != true)
 		{
 			motor->ApplyForcesToWorld(ship);
 			motor->MRUA(ship, 1);
+		}
+		else
+		{
+			ship->setVelocity({ 0,0 });
+			ship->SetAcceleration({ 0,0 });
+			ship->ResetForce();
+			addForceX = addForceY = 0;
 		}
 	}
 
@@ -189,6 +198,7 @@ bool Player::Update(float dt)
 
 bool Player::PostUpdate()
 {
+	app->audio->PlayFx(fxWin);
 	//meteor texture
 	Animation* meteor = &meteorAnim;
 	meteor->Update();
@@ -241,6 +251,7 @@ bool Player::PostUpdate()
 	{
 		SDL_Rect winSceen = { 0, 0, 1280, 720 };
 		app->render->DrawTexture(winTex, 0, -app->render->camera.y, &winSceen);
+		app->audio->PlayFx(fxWin);
 	}
 	return true;	
 }
@@ -251,7 +262,15 @@ bool Player::CleanUp()
 		return true;
 	app->tex->UnLoad(explosionTex);
 	app->tex->UnLoad(rocketTex);
+	app->tex->UnLoad(oceanTex);
+	app->tex->UnLoad(meteorTex);
+	app->tex->UnLoad(fireTex);
+	app->tex->UnLoad(winTex);
+	app->tex->UnLoad(loseTex);
+	app->tex->UnLoad(bombTex);
 
+	app->audio->UnloadFX(fxWin);
+	app->fxList.Clear();
 	active = false;
 
 	return true;
