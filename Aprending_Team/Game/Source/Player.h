@@ -53,6 +53,8 @@ public:
 	float addForceY;
 	PhysicsEngine* motor;
 	Body* ship;
+	int fuel=4;
+	int fuelC=0;
 
 private:
 
@@ -67,6 +69,9 @@ private:
 	SDL_Texture* bombTex;
 	SDL_Texture* oceanTex;
 	SDL_Texture* cloudTex;
+	SDL_Texture* pl1Tex;
+	SDL_Texture* pl2Tex;
+	SDL_Texture* fuelTex;
 	unsigned int fxWin;
 	Animation explosionAnim;
 	Animation meteorAnim;

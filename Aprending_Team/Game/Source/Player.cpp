@@ -38,8 +38,11 @@ bool Player::Start()
 	winTex = app->tex->Load("Assets/Textures/win.png");
 	bombTex = app->tex->Load("Assets/Textures/bomb.png");
 	loseTex = app->tex->Load("Assets/Textures/lose.png");
+	pl1Tex = app->tex->Load("Assets/Textures/planet1.png");
+	pl2Tex = app->tex->Load("Assets/Textures/planet2.png");
 	oceanTex = app->tex->Load("Assets/Textures/ocean.png");
 	cloudTex = app->tex->Load("Assets/Textures/clouds.png");
+	fuelTex = app->tex->Load("Assets/Textures/fuel.png");
 	fxWin = app->audio->PlayMusic("Assets/Audio/Hymn.wav");
 	app->fxList.Add(&fxWin);
 
@@ -101,13 +104,20 @@ bool Player::PreUpdate()
 			
 			fire = true;
 			landed = false;
+
+
+			if (fuelC < 750)
+			{
+				fuelC++;
+			}
+			if (fuelC == 750)
+			{
+				fuelC = 0;
+				fuel--;
+			}
 		}
 		else if (acc > 0)acc -= 0.05;
 
-		if (app->input->GetKey(SDL_SCANCODE_P) == KEY_REPEAT)
-		{
-			ship->position.y += 5;
-		}
 
 		if (landed == false)
 		{
@@ -141,7 +151,12 @@ bool Player::PreUpdate()
 	}
 
 	//meteor harcoded hitbox (as all hitboxes will be cuz idk any other way rn)
-	//if (ship->position.x < 50 + 58 && ship->position.x + 55 > 50 && ship->position.y < 50 + 58 && ship->position.y + 175 > 50) alive = false;
+	
+	if (ship->position.x < 250 + 58 && ship->position.x + 55 > 250 && ship->position.y < -2500 + 58 && ship->position.y + 175 > -2500) alive = false;
+
+	if (ship->position.x < 570 + 58 && ship->position.x + 55 > 570 && ship->position.y < -3550 + 58 && ship->position.y + 175 > -3550) alive = false;
+
+	if (ship->position.x < 700 + 58 && ship->position.x + 55 > 700 && ship->position.y < -4100 + 58 && ship->position.y + 175 > -4100) alive = false;
 
 	//No you cant go to the center of the earth Verne
 	if (ship->position.y > 70 && angle > 355  && ship->velocity.y < 3.0f && ship->velocity.x < 3.0f || ship->position.y > 70 && angle < 5  && velocity < 100 && ship->velocity.y < 5.0f && ship->velocity.x < 5.0f)
@@ -153,6 +168,8 @@ bool Player::PreUpdate()
 	}
 	else if(ship->position.y > 75 ) alive = false;
 	
+	if (fuel == 0)alive = false;
+
 	if (ship->position.y == 70 && alive == true && bomb == true)
 	{
 		win = true;
@@ -179,6 +196,7 @@ bool Player::PreUpdate()
 	//enter to revive (as in real life)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
+		win = false;
 		alive = true;
 		ship->SetPosition(startingPos);
 		angle = 0;
@@ -186,6 +204,8 @@ bool Player::PreUpdate()
 		bomb = false;
 		ship->velocity.x = 0.0f;
 		ship->velocity.y = 0.0f;
+		fuel = 4;
+		fuelC = 0;
 	}
 	return true;
 }
@@ -212,13 +232,27 @@ bool Player::Update(float dt)
 
 bool Player::PostUpdate()
 {
+
+	SDL_Rect pl1Rec = { 0, 0, 884, 884 };
+	app->render->DrawTexture(pl1Tex, 800, -2600, &pl1Rec);
+
+	SDL_Rect pl2Rec = { 0, 0, 884, 884 };
+	app->render->DrawTexture(pl2Tex, -200, -3800, &pl2Rec);
+
 	app->audio->PlayFx(fxWin);
 	//meteor texture
 	Animation* meteor = &meteorAnim;
 	meteor->Update();
 
 	SDL_Rect meteorRec = meteor->GetCurrentFrame();
-	app->render->DrawTexture(meteorTex, 50, 50, &meteorRec);
+	app->render->DrawTexture(meteorTex, 250, -2500, &meteorRec);
+
+	SDL_Rect meteorRec2 = meteor->GetCurrentFrame();
+	app->render->DrawTexture(meteorTex, 570, -3550, &meteorRec2);
+
+	SDL_Rect meteorRec3 = meteor->GetCurrentFrame();
+	app->render->DrawTexture(meteorTex, 700, -4100, &meteorRec3);
+
 
 	//bomb print
 	if (bomb == true)
@@ -226,6 +260,8 @@ bool Player::PostUpdate()
 		SDL_Rect bombRec = { 0, 0, 50, 50 };
 		app->render->DrawTexture(bombTex, bombPos, -5800, &bombRec);
 	}
+
+	
 
 	//ocean print
 	/*if (bomb == true)
@@ -260,12 +296,38 @@ bool Player::PostUpdate()
 	}
 
 	
-
 	SDL_Rect cloudRec = { 0, 0, 2360, 984 };
 	app->render->DrawTexture(cloudTex, -500, -1500, &cloudRec);
-
 	
+	if (fuel == 4)
+	{
+		SDL_Rect fuelRec1 = { 0, 0, 46, 20 };
+		app->render->DrawTexture(fuelTex, 0, -app->render->camera.y, &fuelRec1);
+	}
 
+	if (fuel == 3)
+	{
+		SDL_Rect fuelRec2 = { 47, 0, 46, 20 };
+		app->render->DrawTexture(fuelTex, 0, -app->render->camera.y, &fuelRec2);
+	}
+
+	if (fuel == 2)
+	{
+		SDL_Rect fuelRec3 = { 94, 0, 46, 20 };
+		app->render->DrawTexture(fuelTex, 0, -app->render->camera.y, &fuelRec3);
+	}
+
+	if (fuel == 1)
+	{
+		SDL_Rect fuelRec4 = { 141, 0, 46, 20 };
+		app->render->DrawTexture(fuelTex, 0, -app->render->camera.y, &fuelRec4);
+	}
+
+	if (fuel == 0)
+	{
+		SDL_Rect fuelRec5 = { 188, 0, 46, 20 };
+		app->render->DrawTexture(fuelTex, 0, -app->render->camera.y, &fuelRec5);
+	}
 	//lose screen print
 	if (alive == false && explosionAnim.HasFinished() == true)
 	{

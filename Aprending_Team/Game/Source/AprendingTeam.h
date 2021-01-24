@@ -15,7 +15,7 @@ public:
 	void MRUA(Body* body, float dt);
 
 private:
-	int gravityMoon = 2;
+	int gravityMoon = 3;
 	int gravityEarth = 10;
 	int earthRange = -2000;
 	int moonRange = -4000;
